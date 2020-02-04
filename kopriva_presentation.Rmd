@@ -22,6 +22,9 @@ library(tidyverse)
 library(knitr)
 library(flair)
 library(gridExtra)
+library(viridis)
+library(RColorBrewer)
+library(forcats)
 
 knitr::opts_chunk$set(warning = FALSE)
 ```
@@ -195,12 +198,19 @@ practice continues to widen" (Cobb, 2015).
 
 
 ## Current Climate of Computing -- Statistics
-    
+
+<center>
+
+![](figures/userdeveloper.png)
+
+</center>
+
 - In 2005  the `ggplot2` was created, a midst the conversation for creating user 
 friendly `R` tools (Wickham). 
 
 - In 2012 `RMarkdown` was created, as an easy-to-use system for embedding code 
 chunks (`R`, Python, etc.) in Markdown documents. 
+
 
 <!-- * Breaking the copy-and-paste workflow of an antiquated user-interface  -->
 <!-- design, promoting reproducibility of statistical analyses.  -->
@@ -430,8 +440,6 @@ looking for evidence, students learn the computational concepts while building c
 
 ## `R` for Data Science Workshops    
 
-<!-- These are offered each semester during the 2018-19 & 2019-2020 academic years.  -->
-
 - __Introduction to `R`__: objects in `R`, working in `R`, inspecting, 
 extracting, wrangling, summarizing, and visualizing data with base `R` tools
 
@@ -442,6 +450,56 @@ looping, and user-defined functions
 `lubridate`, data organization with `tidyr`  
 
 - __Data Visualization in `R`__: grammar of graphics with `ggplot2`
+
+## Workshop Tools 
+
+- RStudio 
+    * Access to the resources of `R`, while providing you with a comfortable 
+    working environment. 
+    * Consistent across operating systems! 
+<!-- Not the case for other statistical software packages. -->
+
+<!-- The RStudio integrated development environment (IDE) includes a view of the  -->
+<!-- workspace environment, a data browser, file browser, and plotting window,  -->
+<!-- which makes it less intimidating than the bare `R` shell." -->
+
+<!-- Because RStudio is an IDE, it includes integrated help files,  -->
+<!-- intelligent code completion, and syntax highlighting---all of which help to  -->
+<!-- reduce the learning curve.  -->
+
+<!-- Additionally, RStudio makes reproducibility simple with dynamic `RMarkdown` -->
+<!-- documents, allowing for a full integration of the data analysis workflow. -->
+
+- RMarkdown Documents  
+    * Allows attendees to keep their code organized and their workspace clean. 
+    * Exploratory work is situated within each topic.  
+  
+<!-- For new learners, it is unnatural to create an organized script file with comments on each step.  -->
+        
+<!-- Helping workshop facilitators more easily debug any issues that may arise.    -->
+<!-- When participants revisit their materials, the code they generated is neatly  -->
+<!-- organized alongside the description of the process the code carries out.  -->
+<!-- Decreases ramp-up time.  -->
+
+- RStudio Cloud 
+<!-- The RStudio Cloud was created as a platform to make it easy to do, share, -->
+<!-- teach and learn data science using `R`.  -->
+    * Publicly available workshop materials, without software or package 
+    installation, or data transfers. 
+    * Each workshop is contained in an organized `R` project directory. 
+  
+<!-- Interact with the workshop's materials in the same manner as a locally  -->
+<!-- installed version of RStudio -->
+
+<!-- Especially important during an introductory workshop, unexpected hiccups around  -->
+<!-- package installation, data transfer, or the working directory do not arise.  -->
+    
+<!-- Attendees are exposed to best practices for reproducible project construction.  -->
+
+<!-- All of the participants' changes are stored locally in their RStudio Cloud  -->
+<!-- workspace, which they have the ability to access for years to come.  -->
+<!-- Additionally, RStudio Cloud provides interactive tutorials covering key skills  -->
+<!-- in learning to program in \texttt{R}.  -->
 
 ## Data Context
 
@@ -582,53 +640,105 @@ len <- fish %>%
 grid.arrange(wl, len, nrow = 2, widths = c(6, 4))
 ```
 
-## Workshop Attendance by Department Affiliation 
+## Workshop Attendance by Department 
 
-```{r, echo = FALSE, message = FALSE, warning = FALSE, eval = TRUE}
-library(viridis)
-library(RColorBrewer)
-library(forcats)
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
 
-all_ws <- read_csv("data/all_ws_clean.csv") %>% 
-  mutate(id = ifelse(is.na(name) == FALSE, name, identifier)) %>% 
-  filter(program != "Postdoc/Faculty/Staff") 
-## removing these departments eliminates 10 individuals
+intro_ws <- read_csv("data/intro_clean_AY19.csv")
 
-dept_levs <- c("LRES", "Ecology", "Plant Sciences", "Biochem/Microbio",  
-               "Engineering", "Math/Stats", "Animal Sciences", 
-               "Business", "Earth Sciences", "Biology",
-               "Agriculture", "CS", "Education", "Health Sciences", 
-               "Poly Sci", "Psych")
+intermediate_ws <- read_csv("data/intermediate_clean_AY19.csv")
+
+wrangling_ws <- read_csv("data/wrangle_clean_AY19.csv")
+
+visualization_ws <- read_csv("data/data_viz_clean_AY19.csv")
+
+
+all_ws <- full_join(intro_ws, 
+                    intermediate_ws, 
+                    by = intersect(colnames(intro_ws), 
+                                   colnames(intermediate_ws)), 
+                    copy = FALSE) %>%
+  full_join(wrangling_ws, 
+            by = intersect(colnames(.), colnames(wrangling_ws)), 
+            copy = FALSE) %>% 
+  full_join(visualization_ws, 
+            by = intersect(colnames(.), colnames(visualization_ws)), 
+            copy = FALSE) %>% 
+  select(-X1, -agree, -workflow)
+
+
+all_ws <- all_ws %>% 
+  rename(workshop = ws) %>% 
+  mutate(store_data = ifelse(store_data == "", "Other", store_data)) %>% 
+  mutate(degree = case_when(grepl('[Ii] am a [Ff]aculty', degree) ~ "Faculty", 
+                            grepl('[Pp]ost', degree) ~ "Post-Doctorate",
+                            grepl('[Ii] am a [Ss]taff', degree) ~ "Staff",
+                            grepl('Staff Member', degree) ~ "Staff", 
+                            TRUE ~ degree)) %>%
+  mutate(program = case_when(grepl('[Ss]taff', program) ~ 
+                               "Unaffiliated", 
+                             grepl('[Mm]athematics/[Ss]tatistics', program) ~ 
+                               "Mathematics/Statistics/Data Science",
+                             grepl('LRES', program) ~ 
+                               "Land Resources Environmental Science",
+                             is.na(program) ~ "Not Selected",
+                             program == "Other" ~ "Unaffiliated",
+                             TRUE ~ program)) %>% 
+  mutate(degree = case_when(is.na(degree) ~ "Other",
+                            degree == "Bachelors" ~ "Bachelor's", 
+                            TRUE ~ degree)) %>% 
+  mutate(coursework_help = case_when(grepl('Coursework', reason_attend) ~ "Coursework Assistance", 
+                                     TRUE ~ "NA")) %>%
+  mutate(prof_recommend = case_when(grepl('Professor', reason_attend) ~ 
+                                      "Department/Professor Recommended", 
+                                    TRUE ~ "NA")) %>%
+  mutate(prof_develop = case_when(grepl('Professional', reason_attend) ~ 
+                                    "Professional Development", 
+                                  TRUE ~ "NA")) %>%
+  mutate(research_help = case_when(grepl('[Rr]esearch', reason_attend) ~ 
+                                     "Research Assistance", 
+                                   TRUE ~ "NA")) %>% 
+  mutate(workshop = case_when(workshop == "introR" ~ "Introduction to R", 
+                        workshop == "intermediateR" ~ "Intermediate R", 
+                        workshop == "wranglingR" ~ "Data Wrangling in R", 
+                        workshop == "Data Visualization" ~ "Data Visualization in R"))
+
+```
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE, eval = FALSE}
+dept_levs <- c("Land Resources Environmental Science", 
+               "Not Selected", 
+               "Ecology", 
+               "Plant Sciences", 
+               "Biochemistry/Microbiology", 
+               "Unaffiliated", 
+               "Mathematics/Statistics/Data Science", 
+               "Engineering", 
+               "Animal and Range Sciences", 
+               "Ecology and Environmental Sciences", 
+               "Business", 
+               "Earth Sciences", 
+               "Biology", 
+               "Agriculture", 
+               "Computer Science", 
+               "Education", 
+               "Health Sciences", 
+               "Political Science", 
+               "Psychology")
   
-degree_levs <- c("Bachelors","Master's", "Doctorate", "Faculty", "Staff", "Other")
+degree_levs <- c("Bachelor's","Master's", "Doctorate", "Post-Doctorate", "Faculty", "Staff", "Other")
 
 ## Programs of Study
 attendance <- all_ws %>%
-  #filter(semester %in% c("f18", "s19")) %>% 
   mutate(program = as.character(program)) %>% 
   rename(Department = program, Workshop = workshop, Degree = degree) %>% 
-  mutate(Department = case_when(grepl("Land Resources", Department) ~ 
-                                  "LRES", 
-                                grepl("Ecology and Environment", Department) ~ 
-                                  "Ecology", 
-                                grepl("Mathematics", Department) ~ 
-                                  "Math/Stats",
-                                grepl("Animal and Range", Department) ~
-                                  "Animal Sciences",
-                                grepl("Biochemistry", Department) ~ 
-                                  "Biochem/Microbio",
-                                grepl("Computer Science", Department) ~ "CS",
-                                grepl("Political Science", Department) ~ "Poly Sci", 
-                                grepl("Psychology", Department) ~ "Psych",
-                                grepl("Other", Department) ~ "Faculty/Staff",
-                                TRUE ~ Department), 
-         Degree = case_when(Degree == "Bachelors" ~ "Bachelor's", 
-                            TRUE ~ Degree)) %>%
-  mutate(Department = factor(Department, levels = dept_levs), 
-         Degree = factor(Degree, levels = degree_levs)) %>% 
+  mutate(Degree = factor(Degree, levels = degree_levs), 
+         Department = factor(Department, levels = dept_levs)) %>% 
   group_by(Department, Degree) %>%
   summarize(Freq = n()) %>% 
-  filter(Department != "NA", Degree != "NA") %>% 
+  group_by(Department) %>% 
+  arrange(desc(Freq)) %>% 
+  
   ggplot(mapping = aes(x = Department, y = Freq, fill = Degree)) + 
   coord_flip() + 
   geom_bar(stat = "identity") + 
@@ -654,21 +764,350 @@ knitr::include_graphics("figures/attendance.png")
 ```
 
 
+## Workshop Attendance by Topic
+
+```{r, echo = FALSE}
+all_ws %>% 
+  group_by(workshop) %>% 
+  summarize(Freq = n()) %>% 
+  arrange(desc(Freq)) %>% 
+  kable(col.names = c("Workshop", "Attendees"))
+```
+
+<!-- Many participants attend subsequent workshops, but nearly 60% only attended the -->
+<!-- Introduction to R workshop.  -->
+
+
 ## Computing Backgrounds of Attendees
+
+```{r, echo = FALSE, eval = FALSE}
+all_ws <- 
+  all_ws %>% 
+  mutate(python = ifelse(str_detect(languages, "Python"), 
+                         "Yes", 
+                         "No"),
+         R = ifelse(str_detect(languages, "R"), 
+                         "Yes", 
+                         "No"),
+         C = ifelse(str_detect(languages, "C++"), 
+                         "Yes", 
+                         "No"),
+         matlab = ifelse(str_detect(languages, "MatLab"), 
+                         "Yes", 
+                         "No"),
+         java = ifelse(str_detect(languages, "Java"), 
+                         "Yes", 
+                         "No"),
+         fortran = ifelse(str_detect(languages, "Fortran"), 
+                         "Yes", 
+                         "No"),
+         no_languages = case_when(str_detect(languages, "None") ~ 
+                                    "None",
+                                  str_detect(languages, 
+                                             "What is a programming language?") ~
+                                    "Unfamiliar"),
+         other_language = ifelse(str_detect(languages, "Other"), 
+                         "Yes", 
+                         "No"),
+         SQL = ifelse(str_detect(languages, "SQL"), 
+                         "Yes", 
+                         "No")
+  )
+
+
+all_ws %>% 
+  gather(python:SQL, key = "language", value = "familiar") %>% 
+  filter(familiar == "Yes" | familiar == "Unfamiliar" | familiar == "None") %>% 
+  group_by(language) %>%
+  count(n = n()) %>% 
+  arrange(desc(n))  
+```
+
+
+|Programming Language(s)         | Attendees |  
+|:-------------------------------|:----------|  
+| None                           |  74       |  
+| `R`                            |  36       |  
+| Python                         |  31       |  
+| Java or Javascript             |  14       |  
+| SQL                            |  13       |  
+| C or C++                       |  10       |  
+| Fortran                        |  5        |  
 
 
 ## Statistical Backgrounds of Attendees
 
+| Statistics Course(s)           | Attendees |  
+|:-------------------------------|:----------|  
+| Introductory Statistics        |  46       |  
+| Applied Statistics             |  42       |  
+| None                           |  24       |  
+| Discipline Specific Intro Stat |  20       |  
+| Intermediate Statistics        |  10       |  
+| Experimental Design            |  8        |  
+| Probability Theory             |  6        |  
 
-## Reasons for Attending 
+
+## Reasons for Attending Workshops
+
+```{r, echo = FALSE, eval = FALSE}
+all_ws <- 
+  all_ws %>% 
+  select(-coursework_help:-research_help) %>% 
+  mutate(
+    grad_or_career_prep = ifelse(
+      str_detect(
+        tolower(reason_attend),
+        "grad|career|job"), 
+      "Yes", 
+      "No"), 
+    adviser_recommend = ifelse(
+      str_detect(
+        tolower(reason_attend), 
+        "adviser"), 
+      "Yes", 
+      "No"), 
+    dept_recommend = ifelse(
+      str_detect(
+        tolower(reason_attend),
+        "department"), 
+      "Yes", 
+      "No"), 
+    flier = ifelse(
+      str_detect(
+        tolower(reason_attend),
+        "flier"), 
+      "Yes", 
+      "No"), 
+    network = ifelse(
+      str_detect(
+        tolower(reason_attend),
+        "network"), 
+      "Yes", 
+      "No"), 
+    refresh_update = ifelse(
+      str_detect(
+        tolower(reason_attend),
+        "refresh|brush up|broaden|improve|know more"), 
+      "Yes", 
+      "No"), 
+    professional_develop = ifelse(
+      str_detect(
+        tolower(reason_attend),
+        "professional|students|develop"), 
+      "Yes", 
+      "No"
+    ), 
+    research_help = ifelse(
+      str_detect(
+        tolower(reason_attend),
+        "research|analyze"), 
+      "Yes", 
+      "No"), 
+    coursework_help = ifelse(
+      str_detect(
+        tolower(reason_attend),
+        "course|stat"), 
+      "Yes", 
+      "No")
+    
+)
+
+all_ws %>% 
+  gather(grad_or_career_prep:coursework_help, key = "reason", value = "agree") %>% 
+  filter(agree == "Yes") %>% 
+  group_by(reason) %>% 
+  count(n = n()) %>% 
+  arrange(desc(n))  
+```
+
+| Reason(s) Attended              | Attendees |  
+|:--------------------------------|:----------|  
+| Research Assistance             | 58        |  
+| Coursework Assistance           | 36        |  
+| Saw a Flier                     | 23        |  
+| Refresh or Update Skills        | 17        |  
+| Preparation for Graduate School | 14        |  
+| Department Recommended          | 13        |  
+| Adviser Recommended             | 6         |  
+| Professional Development        | 6         |   
 
 
-## Resouces Used to Learn `R` 
+## Resources Used to Learn `R` 
+
+```{r, echo = FALSE, eval = FALSE}
+all_ws <- 
+  all_ws %>% 
+  mutate(
+    no_resources = case_when(
+      resources == "?" ~ 
+        "Yes", 
+      str_detect(
+        tolower(resources),
+        "n/a|haven't learned|haven't used yet|none") ~ 
+        "Yes"
+      ), 
+    previous_workshops = ifelse(
+      str_detect(
+        tolower(resources),
+        "your|these courses|this course|this workshop"), 
+      "Yes", 
+      "No"), 
+    adviser_resource = ifelse(
+      str_detect(
+        tolower(resources),
+        "adviser"), 
+      "Yes", 
+      "No"), 
+    course_resources = ifelse(
+      str_detect(
+        tolower(resources),
+        "course material"), 
+      "Yes", 
+      "No"), 
+    book_resources = ifelse(
+      str_detect(
+        tolower(resources),
+        "books"), 
+      "Yes", 
+      "No"), 
+    lab_resources = ifelse(
+      str_detect(
+        tolower(resources),
+        "lab mates"), 
+      "Yes", 
+      "No"), 
+    peer_resources = ifelse(
+      str_detect(
+        tolower(resources),
+        "peers"), 
+      "Yes", 
+      "No"), 
+    professor_resources = ifelse(
+      str_detect(
+        tolower(resources),
+        "professor"), 
+      "Yes", 
+      "No"), 
+    internet_resources = ifelse(
+      str_detect(
+        tolower(resources),
+        "internet|youtube"), 
+      "Yes", 
+      "No")
+
+  )
+
+all_ws %>% 
+  gather(no_resources:internet_resources, key = "resource", value = "used") %>% 
+  filter(used == "Yes") %>% 
+  group_by(resource) %>% 
+  count(n = n()) %>% 
+  arrange(desc(n))  
+
+```
+
+| Resources Used                  | Attendees |  
+|:--------------------------------|:----------|  
+| Internet Resources              | 55        |  
+| Course Resources                | 45        |  
+| Peers                           | 43        |  
+| Lab Mates                       | 29        |  
+| Adviser                         | 21        |  
+| None                            | 7        |  
+| This Workshop Series            | 5         |  
+| Books                           | 3         |   
 
 
 ## Do These Skills Capture What Researchers Use?
 
-## Future Directions -- Learning Trajectory for Computing with Data  {data-background=#C1C6C8}
+- Collection of the `R` code generated by environmental science graduate 
+students provides insight into the key data science skills necessary for 
+research in these fields 
+
+- Aids in reevaluating the content of these workshops, to ensure they cover the
+skills necessary for graduate-level environmental science research.
+
+## Working in `R`   
+
+- Using `R` projects to promote better workflow practices  
+    * Working directories
+    * Organized folder directory 
+
+- Using `RMarkdown` documents to promote better script writing 
+    * Organized sections of code 
+    * Allows for written descriptions 
+    * Promotes reproducibility
+
+<!-- With novice R programmers, R scripts can end up looking like a junk drawer,  -->
+<!-- with no organization and irrelevant content. -->
+ 
+ - `R` environment
+    * Data access 
+    * Using functions -- naming arguments 
+    
+## Working with Data in `R` 
+
+- Handing a variety of data structures 
+
+- Wrangling data  
+    * Selecting columns 
+    * Filtering rows or elements
+    * Creating new variables
+    * Mutating existing variables
+
+## Control Flow 
+
+- Conditional statements
+    * Mutating existing variables
+    * Function breaks 
+
+- Repeated operations 
+    * Sequences of steps being copied-and-pasted numerous times 
+    * Looping 
+    * Vectorization 
+    
+- User-defined functions 
+    * Function scoping
+    
+## Data Presentations  
+
+- Data summaries 
+    * Means of groups 
+    
+- Data visualizations  
+    * Adding facets 
+    * Plotting specifications
+
+## Dissemination of Research 
+
+- Infusing the skills outlined by this research into Data Carpentry's _Data Analysis and Visualization in `R` for Ecologists_ curriculum
+
+- Creating lessons through the Carpentries Incubator and Carpentries Lab
+    * Focusing on teaching the skills outlined by this research, not currently
+    included in the Carpentries curriculum
+
+## Discussion & Future Directions
+
+- Attendance of these workshops by individuals outside of environmental science
+disciplines brings to question if this type of tailored design work is 
+necessary. 
+
+<!-- Over a third of the workshop attendees came from disciplines outside of  -->
+<!-- environmental sciences.  -->
+
+<!-- Strikingly, these attendees reported similar workshop experiences to attendees  -->
+<!-- from these targeted disciplines. -->
+
+- Are there common data science skills necessary for research in __any__ 
+scientific field? 
+ 
+- A larger number of attendees from environmental science fields persisted 
+across workshops.   
+    * What are the drivers behind these individuals' continued attendance?
+    * Investigating the learning outcomes of workshop attendees could provide 
+    insight into the necessity of these discipline-specific learning 
+    opportunities. 
 
 ## Many Thanks
 
@@ -678,5 +1117,16 @@ knitr::include_graphics("figures/attendance.png")
 - Workshop Facilitators and Helpers 
 - Environmental Science faculty and graduate students
 
-# References 
+
+## References 
+
+<center> 
+
+</br>
+</br>
+
+![](figures/Rpubs.JPG)
+
+http://bit.ly/theobold_kopriva
+
 
