@@ -1,0 +1,705 @@
+---
+title: "Designing Data Science Workshops for Data-Intensive Scientific Research"
+subtitle: "</br> Allison Theobold, Ph.D. Candidate in Statistics"
+author: 'Kopriva Seminar Series </br> February 6, 2020'
+output:
+  ioslides_presentation:
+    incremental: yes
+  beamer_presentation:
+    incremental: yes
+fontsize: 10pt
+header-includes: \usepackage{float} \usepackage{bm} \usepackage{multicol} \usepackage{graphicx} \usepackage{natbib}
+---
+
+<style type="text/css">
+slides > slide:not(.nobackground):after {
+  content: '';
+}
+</style>
+
+```{r setup, echo = FALSE, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(knitr)
+library(flair)
+library(gridExtra)
+
+knitr::opts_chunk$set(warning = FALSE)
+```
+
+## Outline  
+
+- Study Motivation  
+- Research Questions  
+- Pilot Study & Faculty Interviews  
+- Study Design for Workshops  
+- Data Collection & Analysis    
+- Benefits of Research
+
+## A Motivating Vignette  
+
+- Suppose you are an Ecology graduate student studying the abundance of wild and
+hatchery-raised pallid sturgeon. You have collected data over the last 2 years 
+on fish abundance along the same reaches of the Missouri River, to look for 
+trends in fish abundance.  
+
+- When recording your data in Excel, you chose for each section of the Missouri 
+to be a row and every sampling instance to be a different column.   
+
+```{r, out.width = "600px", echo = FALSE, fig.align='center'}
+knitr::include_graphics("figures/wide.jpg")
+``` 
+
+
+## Data Problems  
+
+The `R` functions you saw in your courses require for your data to be in long 
+format.
+
+```{r, out.width = "500px", echo = FALSE, fig.align='center'}
+knitr::include_graphics("figures/long.jpg")
+``` 
+
+
+## What Would You Do?  {.vcenter}
+
+<div style="font-size:1.5em">
+
+</br>
+</br>
+
+_Faced with this issue of data reorganizing, what would you do?_  
+
+  _What resources would you use?_  
+
+
+## Motivation 
+
+- Changing practice of environmental science has changed, because of growth in 
+computational power and the volume and variety of available data. 
+
+- Advances in technology have made computationally heavy applications of data 
+science techniques essential understandings for environmental science research.
+
+<!-- management and coalition of large data sets, high frequency spatial and temporal -->
+<!-- data visualization, and hierarchical Bayesian modeling -->
+
+- These advances have created a growing need for scientists to receive an 
+appropriate education in computational methods and techniques relevant to their
+discipline.  
+
+## History of Computing -- Environmental Sciences 
+
+- Andelman and colleagues (2000), reflected that their students were 
+unprepared with both the statistical and computational skills necessary for 
+data analysis.   
+
+    * 93% of students did not have skills in the scripted programming languages 
+    necessary for the integration of large data sets. 
+    * The greatest limitation students faced was related to data concatenation,
+    manipulation, and analysis.  
+
+- Calls surfaced to re-evaluate the curriculum, to "better prepare current and 
+future generations of environmental researchers" (Green et al., 2005).   
+
+
+## (Lack of) Computing in Environmental Sciences  
+
+- Strasser and Hampton (2012) explored the importance of data management in 
+undergraduate ecology courses.  
+
+    * Less than 20% of instructors included data management topics in their 
+    courses, despite rating data management as a very important topic for their 
+    research. 
+    
+<!-- such as workflows, databases, and reproducibility -->
+
+- A 2012 survey of graduate students: 
+
+    * over 80% of students reported that they had received no formal training in
+    computing, even at the most basic level    
+    * 74% stated that they had no skills in any programming language (Hernandez,
+    Meyernik, Murphy-Mariscal & Allen, 2012).  
+    
+    
+## Current Climate of Computing -- Environmental Sciences
+
+- In 2017, environmental scientists produced a formative paper on the skills 
+necessary for data-intensive environmental science research (Hampton et al.). 
+    * data management and processing
+    * data analysis
+    * software skills for science
+    * data visualization
+    * communication methods for collaboration and dissemination
+
+<!-- ``many if not most of [the] elements [of these areas] apply across multiple categories''  -->
+    
+<!-- - No attention is paid to the intersection between the computational skills  -->
+<!-- required for data analysis and the other four key areas.  -->
+
+<!-- No discussion is made regarding which computing skills are necessary across  -->
+<!-- __every__ environmental science field and which skills may be unnecessary or  -->
+<!-- purely tangential to some areas. -->
+
+
+## Statistics and the Environmental Sciences  
+
+- Environmental science educators reiterate the importance of data science 
+skills for students' participation in "data-intensive" research. 
+
+- None of these conversations pays attention to the role a students' 
+statistics education plays in students' attainment of the computing skills 
+necessary for data-intensive research. 
+
+<!-- data management, visualization, and analysis -->
+
+- Over the last twenty years, Statistics preparation in the environmental 
+sciences has become  vital.  
+
+    * Hence, Statistics courses have been incorporated into undergraduate and 
+    graduate programs, across the nation.  
+    
+    
+## History of Computing -- Statistics 
+
+- "Computing has been one of the most glaring omissions in the set of tools that
+have so far defined Statistics education" (Friedman, 2001).  
+
+- Statistics' commitment to data modeling has prevented the field from entering 
+new arenas where "the data being gathered is not suitable for analysis by 
+data models" (Breiman, 2001, p. 200). 
+
+<!-- Hence, Statisticians should become more familiar with  -->
+<!-- algorithmic modeling, to address this significant change in the data landscape.  -->
+
+- Brown and Kass argued that "to remain vibrant, [Statistics] must open up by 
+taking a less restrictive view of what constitutes statistical training"
+(Brown & Kass, 2009, p. 105).
+
+
+## (Lack of) Computing in Statistics 
+
+- "Most of our students are not prepared for data analysis after their 
+statistics [courses]," because "they have done very little actual data analysis"
+(Nolan & Temple Lang, 2010).  
+
+- Students are either "told to learn how to program by themselves, from each 
+other, or from their teaching assistant in a two-week "crash course" at the 
+start of a course." 
+
+<!-- * Sends a signal to students that computing is not of intellectual  -->
+<!-- importance (Nolan & Temple Lang, 2010)   -->
+
+- "What we teach [in Statistics] lags decades behind what we practice" and "the 
+gap between our half-century-old curriculum and our contemporary statistical 
+practice continues to widen" (Cobb, 2015).   
+
+
+## Current Climate of Computing -- Statistics
+    
+- In 2005  the `ggplot2` was created, a midst the conversation for creating user 
+friendly `R` tools (Wickham). 
+
+- In 2012 `RMarkdown` was created, as an easy-to-use system for embedding code 
+chunks (`R`, Python, etc.) in Markdown documents. 
+
+<!-- * Breaking the copy-and-paste workflow of an antiquated user-interface  -->
+<!-- design, promoting reproducibility of statistical analyses.  -->
+
+<!-- With calls for transforming undergraduate statistics education resounding -->
+<!-- nationally  -->
+    
+- In 2014 the American Statistical Association updated the guidelines for 
+undergraduate programs in Statistics. 
+    * The new guidelines included an increased emphasis on data science skills. 
+    
+<!-- 1. access and manipulate data in various ways -->
+<!-- 2. use a variety of computational approaches to extract meaning from data  -->
+<!-- 3. program in higher-level languages -->
+
+- In 2017, the `tidyverse` package came into being, housing all of the packages
+necessary for a clean data science workflow. 
+
+<!-- import, tidy, transform, wrangle, visualize, and model data  -->
+
+## Barriers to Incorporating Computing    
+
+- This lack of training in computational skills impedes the progress of 
+scientific research, sends the signal to students that computing is not of 
+intellectual importance, and is laden with hidden costs. 
+
+<!-- - This process potentially results in substantial hidden costs: -->
+<!--     * students pick up bad habits and misunderstandings   -->
+<!--     * learn just enough to get through      -->
+<!--     * initial knowledge severely limits them  -->
+<!--     * spend weeks or months on tasks that could be done in hours or days -->
+<!--     * they may be unaware of the reliability and reproducibility of their results -->
+
+- But why are these skills still so rarely included in the curriculum when the 
+need for them is widely recognized?  
+
+    * Courses are potentially taught by people who may not feel prepared teach 
+    these topics. 
+    * Attempting to fit more material into already-full courses and curricula. 
+    * Not clear what computing topics should be included and how.  
+    * Not all institutions have the flexibility to develop courses. 
+<!-- for discipline specific computational techniques.    -->
+
+
+## Resources for Learning `R` 
+
+<!-- - Hampton and colleagues argue that "a symptom of the current curriculum's  -->
+<!-- shortcomings is the recent emergence of a variety of extramural options for  -->
+<!-- acquiring critical technological skills" (p. 547). -->
+
+- The Carpentries: teaches foundational coding, and data science skills to 
+researchers worldwide. In person, hands-on, two-day workshops, with publicly 
+available lessons for specific populations of researchers. 
+
+    * Software Carpentry 
+    * Data Carpentry 
+    
+<!-- Since November 2011, we have taught over 16,000 learners in 1659 workshops in 51 countries, with over 500 instructors.     -->
+
+- `swirl`: an `R` package which turns the `R` console into an interactive 
+learning environment
+
+<!-- Users receive immediate feedback as they are guided through self-paced lessons in data science and R programming  -->
+
+- Data Camp: interactive `R`, Python, Sheets, SQL and shell courses. Paid online 
+video lessons with coding challenges and projects.
+
+<!-- The Carpentries workshops are open-source and developed by the public.  -->
+<!-- They are intended to reflect the "fundamental" data skills needed to conduct  -->
+<!-- research in the respective field.  -->
+
+<!-- These resources may not reflect the computing needs of a specific community.  -->
+
+
+## Research Questions  
+
+1. What do environmental science faculty members identify as the key computing 
+skills graduate students require to implement statistics for research in their 
+field?   
+
+2. How can the key computing skills identified by environmental science faculty 
+be incorporated into currently existing workshop materials?  
+
+3. What are the experiences of individuals attending data science workshops?  
+
+4. Does the content of these workshops reflect the computing skills 
+used by environmental science graduate students in their research?  
+
+
+## Design-Based Implementation Research 
+
+<!-- Improving environmental science graduate students' access to ``powerful,  -->
+<!-- effective learning opportunities'' (Penuel) necessitates understanding the  -->
+<!-- skills required for these students to be successful in their research. -->
+
+- Design-based implementation research (DBIR) offers a model for the 
+design and testing of innovations within learning contexts. 
+
+    * Develops usable tools for improving teaching and learning in specific 
+    subject matter domains and settings
+    * Uses evidence-based improvements 
+    
+- The collaborative nature of design research positions members of the community
+as "co-designers of solutions to problems" (Fishman et al., 2013, p. 140) rather
+than bystanders. 
+
+
+## Research Phases 
+
+| Research Question | Design Phase | Data Collected |    
+|:----------------|:------------:|:----------------:|  
+| What do environmental science faculty members identify as the key computing skills graduate student require to implement statistics in environmental science research?  | Phase 1  | Faculty interviews |  
+| How can the key computing skills identified by environmental science faculty be incorporated into currently existing workshop materials? | Phase 2  | Carpentries curriculum materials |  
+
+## Phases Continued
+
+Research Question | Design Phase & Data Collected|    
+------------------|------------------------------  
+|What are the experiences of individuals attending data science workshops? | Phase 3 |  Pre- and post-workshop surveys|   
+|Does the content of the workshops reflect the data science skills used by graduate students in their research? | Phase 3 | Collection of research (`R`) code |  
+
+
+<div class="notes">
+
+To investigate these questions, we executed a three-phase design-based
+implementation research model.
+
+In the first phase, we conducted in-depth interviews with faculty
+from environmental science fields regarding the computational skills they 
+believe are necessary for graduate students to succeed  in their research.
+
+Phase two then focused on adapting currently existing  workshop resources to
+design of a series of data science workshops targeting the key computational 
+skills distilled from these interviews.
+
+The final phase consisted of implementing the workshops and collecting survey  
+responses from the workshop attendees regarding their experiences participating
+in each workshop.
+
+</div>
+
+## Phase 1: Faculty Interviews
+
+<!-- In the spring of 2017 and fall of 2018, faculty members from diverse  -->
+<!-- fields within the environmental sciences were invited to participate in a  -->
+<!-- one-hour interview. 
+
+<!-- All faculty members currently overseeing a graduate student  --> 
+<!-- from the Ecology, Land Resources Environmental Science, Animal \&  --> 
+<!-- Range Sciences, and Plant Sciences \& Plant Pathology departments were emailed  --> 
+<!-- requesting their participation in this research. -->
+
+<font size="2">
+
+|Department| Faculty Invited | Faculty Interviewed |  
+|:---------|:---------------:|:-------------------:|  
+|Animal & Range Sciences | 7  | 2 |  
+|Ecology | 15 | 8 |  
+|Land Resources Environmental Sciences | 24 | 8 |  
+|Plant Sciences & Plant Pathology | 15 | 5 |  
+
+</font>
+
+- Faculty members from environmental science fields were interviewed 
+regarding the computational skills they believed were necessary for graduate 
+students to succeed in their research.   
+
+## Computational Expectations
+
+<!-- Computational expectations varied across fields of research, however, every  -->
+<!-- faculty member emphasized:  -->
+
+- Working with Data  
+   * "Organize their data and get it in a way that can be used by `R`" 
+    <!-- storing data, managing data, merging data, collating data, reorganizing data formats -->
+
+- Data Visualization  
+   * Ability to create visualizations of their data early and often  
+
+- Reproducibility   
+    * "Manipulating data in ways that are repeatable"  
+
+- Data Context  
+    * Importance of students acquiring computing skills in familiar data contexts     
+
+## Expectations Acquiring Skills 
+
+- Faculty voiced the expectation that students learn these skills on their own.    
+    * "I think that more and more in our field my generation is sort of just 
+catching up the next generation."  
+    * "Increasingly faculty feel that way like they're they're not at the forefront
+of the programming abilities and so their students are kind of being self-taught
+and then are often ahead of them."  
+    * "I feel personally out of touch, because [students] work in `R` and I 
+haven't taken the time to learn `R`, because of my training and my age."
+
+
+## Benefits of Statistical Computing Workshops
+
+- Approachable training resources for researchers hoping to develop 
+computational skills are scarce and "there is little space in the existing 
+curriculum for courses or additional lectures" (Teal et al., 2015).   
+    * Current resources assume learners have a basic level of understanding of 
+working in `R`.  
+
+- The Carpentries develop publicly available lessons for specific populations of
+researchers. 
+    * Does not assume that attendees have any prior knowledge before attending 
+    the workshops
+    * Allows for learners to sets a clear expectation for the pace of 
+    instruction
+
+- Workshops have the potential to scale more effectively than courses. 
+
+## Workshop Development 
+
+- In 2017, I developed a suite of four 3-hour data science workshops.  
+    * The skills distilled from interviews with faculty members were infused 
+    into Data & Software Carpentry `R` lessons. 
+    * The interactive structure empowers researchers to conduct the computing 
+    necessary for their analyses, in an effective and reproducible way.
+<!-- when learning to program is embedded in exploring, making conjectures, and 
+looking for evidence, students learn the computational concepts while building confidence -->
+    * The environmental science context allows researchers to see immediately 
+    how the computational skills they are learning directly relate to their own
+    research. 
+
+## `R` for Data Science Workshops    
+
+<!-- These are offered each semester during the 2018-19 & 2019-2020 academic years.  -->
+
+- __Introduction to `R`__: objects in `R`, working in `R`, inspecting, 
+extracting, wrangling, summarizing, and visualizing data with base `R` tools
+
+- __Intermediate `R`__: relational and logical operators, conditional statements,
+looping, and user-defined functions  
+
+- __Data Wrangling in `R`__: data wrangling with `dplyr`, `stringr`, and 
+`lubridate`, data organization with `tidyr`  
+
+- __Data Visualization in `R`__: grammar of graphics with `ggplot2`
+
+## Data Context
+
+```{r, message = FALSE, warning = FALSE, echo = TRUE, tidy = TRUE}
+fish <- read_csv("data/BlackfootFish.csv")
+
+glimpse(fish)
+```
+
+## Introduction to `R` -- Working with Data 
+
+```{r, echo = TRUE}
+mean(fish$weight)
+mean(fish$weight, na.rm = TRUE)
+```
+
+## Introduction to `R` -- Data Visualization
+
+<div class="columns-2">
+
+```{r hist, echo = FALSE, eval = FALSE, message = FALSE, warning = FALSE, fig.width = 3.5, fig.height = 5}
+hist(fish$length, bins = 45)
+```
+
+```{r, echo = FALSE}
+decorate("hist") %>%
+  flair("hist")
+
+```
+
+```{r, echo = TRUE, message = FALSE, warning = FALSE, fig.width = 3, fig.height = 4.5}
+hist(fish$length, bins = 45)
+```
+
+```{r scatter, echo = FALSE, eval = FALSE, echo = TRUE, fig.width = 4.5, fig.height = 5}
+plot(weight ~ length, data = fish)
+```
+
+```{r, echo = FALSE}
+decorate("scatter") %>%
+  flair("plot")
+
+```
+
+```{r, echo = FALSE, echo = TRUE, fig.width = 4.5, fig.height = 5}
+plot(weight ~ length, data = fish)
+```
+
+</div>
+
+## Intermediate `R`  
+
+__Subsetting__
+
+```{r subset, echo = FALSE, results = 'hide'}
+
+subset(fish, !is.na(weight) & species == "RBT")
+
+rbt <- subset(fish, species == "RBT", select = -species)
+```
+
+```{r, echo = FALSE}
+decorate("subset") %>%
+  flair_rx("select", background = "pink") 
+
+```
+
+__Repeating Operations__
+
+```{r, echo = TRUE}
+
+condition_fun <- function(w, l){
+  condition = (w^(1/3) / l)*50
+  return(condition)
+}
+  
+for(i in 1:dim(rbt)[2]){
+  rbt$condition[i] <- condition_fun(rbt$weight[i], 
+                                rbt$length[i])
+}
+```
+
+## Data Wrangling 
+
+```{r wrangling, echo = FALSE, results = "hide"}
+
+fish %>% 
+  filter(!is.na(weight), 
+         species == "RBT") %>%
+  select(-species) %>% 
+  mutate(condition = condition_fun(weight, length)) %>% 
+  head()
+
+```
+
+```{r, echo = FALSE}
+decorate("wrangling") %>%
+  flair_rx("select", background = "pink") %>% 
+  flair_rx("filter", background = "pink") %>% 
+  flair_rx("%>%", background = "Aquamarine") 
+
+```
+
+```{r, echo = FALSE}
+
+fish %>% 
+  filter(!is.na(weight), 
+         species == "RBT") %>%
+  select(-species) %>% 
+  mutate(condition = condition_fun(weight, length)) %>% 
+  head()
+
+```
+
+## Data Visualization 
+
+```{r, echo = FALSE}
+decorate("wl <- fish %>%
+        ggplot(aes(x = length, y = weight, color = species)) + 
+        geom_point()
+len <- fish %>% 
+        ggplot(aes(x = length)) + 
+        geom_histogram(bins = 45)
+grid.arrange(wl, len, nrow = 2, widths = c(6, 4))
+") %>%
+  flair_rx("%>%", background = "Aquamarine") %>% 
+  flair("geom_point") %>% 
+  flair("geom_histogram")
+```
+
+```{r, echo = FALSE, warning = FALSE, fig.width = 10, fig.height = 6}
+wl <- fish %>%
+        ggplot(aes(x = length, y = weight, color = species)) + 
+        geom_point()
+len <- fish %>% 
+        ggplot(aes(x = length)) + 
+        geom_histogram(bins = 45)
+grid.arrange(wl, len, nrow = 2, widths = c(6, 4))
+```
+
+## Workshop Attendance 
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE, eval = FALSE}
+library(viridis)
+library(forcats)
+
+all_ws <- read_csv("data/all_ws_clean.csv") %>% 
+  mutate(id = ifelse(is.na(name) == FALSE, name, identifier))
+
+
+dept_levs <- c("Ecology","LRES", "Plant Sciences", "Biochem/Microbio", 
+               "Engineering", "Math/Stats", "Animal Sciences", "Ecology & LRES", 
+               "Business", "Earth Sciences", "Faculty/Staff", "Biology",
+               "Agriculture", "CS", "Education", "Health Sciences", 
+               "Poly Sci", "Psych")
+  
+## Programs of Study
+attendance <- all_ws %>%
+  #filter(semester %in% c("f18", "s19")) %>% 
+  mutate(program = as.character(program)) %>% 
+  rename(Department = program, Workshop = workshop, Degree = degree) %>% 
+  mutate(Department = case_when(grepl("Land Resources", Department) ~ 
+                                  "LRES", 
+                                grepl("Ecology and Environment", Department) ~ 
+                                  "Ecology", 
+                                grepl("Mathematics", Department) ~ 
+                                  "Math/Stats",
+                                grepl("Animal and Range", Department) ~
+                                  "Animal Sciences",
+                                grepl("Biochemistry", Department) ~ 
+                                  "Biochem/Microbio",
+                                grepl("Computer Science", Department) ~ "CS",
+                                grepl("Political Science", Department) ~ "Poly Sci", 
+                                grepl("Psychology", Department) ~ "Psych",
+                                grepl("Other", Department) ~ "Faculty/Staff",
+                                TRUE ~ Department)) %>%
+  mutate(Department = factor(Department, levels = dept_levs)) %>% 
+  group_by(Department, Degree) %>%
+  summarize(Freq = n()) %>% 
+  filter(Department != "NA", Degree != "NA") %>% 
+  ggplot(mapping = aes(x = Department, y = Freq, fill = Degree)) + 
+  geom_bar(stat = "identity") + 
+  ylim(0, 20) +
+  #geom_text(aes(label = Freq, y = Freq + 1), vjust = 0, size = 10) +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = -75, hjust = 0, vjust = 0.5, size = 14), 
+        axis.title.y = element_blank(), 
+        axis.text.y = element_text(size = 12),
+        axis.title.x = element_blank(),
+        legend.position = "top", 
+        legend.text = element_text(size = 10), 
+        legend.title = element_text(size = 10)) + 
+  scale_fill_manual(values = viridis(n = 9))
+
+
+## current position
+careers <- all_ws %>%
+  filter(semester %in% c("f18", "s19")) %>% 
+  mutate(program = as.character(program), 
+         degree = factor(degree,
+         levels = c("Bachelors", "Master's", "Doctorate", "Post-Doctorate",
+                    "Faculty", "Staff", "Other"))) %>%
+  rename(Department = program, Workshop = workshop, Degree = degree) %>% 
+  mutate(Department = case_when(grepl("Land Resources", Department) ~ 
+                                  "LRES", 
+                                grepl("Ecology and Environment", Department) ~ 
+                                  "Ecology", 
+                                grepl("Mathematics", Department) ~ 
+                                  "Math/Stats",
+                                grepl("Animal and Range", Department) ~
+                                  "Animal Sciences",
+                                grepl("Biochemistry", Department) ~ 
+                                  "Biochem/Microbio",
+                                grepl("Computer Science", Department) ~ "CS",
+                                grepl("Political Science", Department) ~ "Poly Sci", 
+                                grepl("Psychology", Department) ~ "Psych",
+                                grepl("Other", Department) ~ "Faculty/Staff",
+                                TRUE ~ Department)) %>%
+  mutate(Department = factor(Department, levels = dept_levs)) %>% 
+  group_by(Degree, Department) %>%
+  summarize(Freq = n()) %>% 
+  filter(Department != "NA", Degree != "NA") %>% 
+  ggplot(mapping = aes(x = Degree, y = Freq, fill = Department)) + 
+  geom_bar(stat = "identity") + 
+  ylim(0, 20) +
+  #geom_text(aes(label = Freq, y = Freq + 1), vjust = 0, size = 10) +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = -75, hjust = 0, vjust = 0.5, size = 14), 
+        axis.title.y = element_blank(), 
+        axis.text.y = element_text(size = 12),
+        axis.title.x = element_blank(),
+        legend.position = "top", 
+        legend.text = element_text(size = 10), 
+        legend.title = element_text(size = 10)) + 
+  scale_fill_manual(values = viridis(n = 18))
+
+
+ggsave("figures/attendance.png", attendance, dpi = 300)
+
+ggsave("figures/degrees.png", careers, dpi = 300)
+
+```
+
+```{r, out.width = "1000px", out.height = "550px"}
+
+knitr::include_graphics("figures/attendance.png")
+
+```
+
+## Do These Skills Capture What Researchers Use?
+
+## Many Thanks  
+
+- Stacey Hancock   
+- Mary Alice Carlson, Jenny Green, & Megan Wickstrom 
+- Sara Mannheimer & Mark Greenwood
+- Workshop Facilitators and Helpers 
+- Environmental Science faculty and graduate students
+
+# References 
+

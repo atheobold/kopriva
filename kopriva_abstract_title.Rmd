@@ -1,0 +1,25 @@
+---
+title: "Designing Data Science Worshops for Data-Intensive Scientific Research"
+author: "Allison Theobold"
+output:
+  word_document: default
+  pdf_document: default
+  html_document: default
+---
+
+# Abstract
+
+Over the last 20 years, statistics preparation has become vital for a broad 
+range of scientific fields, and statistics coursework has been readily 
+incorporated into undergraduate and graduate programs. However, a gap remains
+between the computational skills taught in statistics courses and those required
+for the use of statistics in scientific research. In this talk, I will describe 
+research on the design, implementation, and evaluation of a suite of data 
+science workshops for environmental science graduate students, providing 
+students with the skills necessary to retrieve, view, wrangle, visualize, and 
+analyze their data using reproducible tools. These workshops fill a critical 
+hole in the environmental science and statistics curricula, supporting students
+with opportunities to grow in their skills for computing with data. Open to 
+faculty, staff, and the larger community, these workshops promote continued 
+learning of the tools necessary for working with data and provide additional 
+resources for incorporating data science into the classroom.
