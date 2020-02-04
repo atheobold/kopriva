@@ -582,22 +582,26 @@ len <- fish %>%
 grid.arrange(wl, len, nrow = 2, widths = c(6, 4))
 ```
 
-## Workshop Attendance 
+## Workshop Attendance by Department Affiliation 
 
-```{r, echo = FALSE, message = FALSE, warning = FALSE, eval = FALSE}
+```{r, echo = FALSE, message = FALSE, warning = FALSE, eval = TRUE}
 library(viridis)
+library(RColorBrewer)
 library(forcats)
 
 all_ws <- read_csv("data/all_ws_clean.csv") %>% 
-  mutate(id = ifelse(is.na(name) == FALSE, name, identifier))
+  mutate(id = ifelse(is.na(name) == FALSE, name, identifier)) %>% 
+  filter(program != "Postdoc/Faculty/Staff") 
+## removing these departments eliminates 10 individuals
 
-
-dept_levs <- c("Ecology","LRES", "Plant Sciences", "Biochem/Microbio", 
-               "Engineering", "Math/Stats", "Animal Sciences", "Ecology & LRES", 
-               "Business", "Earth Sciences", "Faculty/Staff", "Biology",
+dept_levs <- c("LRES", "Ecology", "Plant Sciences", "Biochem/Microbio",  
+               "Engineering", "Math/Stats", "Animal Sciences", 
+               "Business", "Earth Sciences", "Biology",
                "Agriculture", "CS", "Education", "Health Sciences", 
                "Poly Sci", "Psych")
   
+degree_levs <- c("Bachelors","Master's", "Doctorate", "Faculty", "Staff", "Other")
+
 ## Programs of Study
 attendance <- all_ws %>%
   #filter(semester %in% c("f18", "s19")) %>% 
@@ -617,83 +621,56 @@ attendance <- all_ws %>%
                                 grepl("Political Science", Department) ~ "Poly Sci", 
                                 grepl("Psychology", Department) ~ "Psych",
                                 grepl("Other", Department) ~ "Faculty/Staff",
-                                TRUE ~ Department)) %>%
-  mutate(Department = factor(Department, levels = dept_levs)) %>% 
+                                TRUE ~ Department), 
+         Degree = case_when(Degree == "Bachelors" ~ "Bachelor's", 
+                            TRUE ~ Degree)) %>%
+  mutate(Department = factor(Department, levels = dept_levs), 
+         Degree = factor(Degree, levels = degree_levs)) %>% 
   group_by(Department, Degree) %>%
   summarize(Freq = n()) %>% 
   filter(Department != "NA", Degree != "NA") %>% 
   ggplot(mapping = aes(x = Department, y = Freq, fill = Degree)) + 
+  coord_flip() + 
   geom_bar(stat = "identity") + 
-  ylim(0, 20) +
+  ylim(0, 40) +
   #geom_text(aes(label = Freq, y = Freq + 1), vjust = 0, size = 10) +
   theme_classic() +
-  theme(axis.text.x = element_text(angle = -75, hjust = 0, vjust = 0.5, size = 14), 
-        axis.title.y = element_blank(), 
+  theme(axis.title.y = element_blank(), 
         axis.text.y = element_text(size = 12),
         axis.title.x = element_blank(),
-        legend.position = "top", 
+        legend.position = "right", 
         legend.text = element_text(size = 10), 
         legend.title = element_text(size = 10)) + 
-  scale_fill_manual(values = viridis(n = 9))
-
-
-## current position
-careers <- all_ws %>%
-  filter(semester %in% c("f18", "s19")) %>% 
-  mutate(program = as.character(program), 
-         degree = factor(degree,
-         levels = c("Bachelors", "Master's", "Doctorate", "Post-Doctorate",
-                    "Faculty", "Staff", "Other"))) %>%
-  rename(Department = program, Workshop = workshop, Degree = degree) %>% 
-  mutate(Department = case_when(grepl("Land Resources", Department) ~ 
-                                  "LRES", 
-                                grepl("Ecology and Environment", Department) ~ 
-                                  "Ecology", 
-                                grepl("Mathematics", Department) ~ 
-                                  "Math/Stats",
-                                grepl("Animal and Range", Department) ~
-                                  "Animal Sciences",
-                                grepl("Biochemistry", Department) ~ 
-                                  "Biochem/Microbio",
-                                grepl("Computer Science", Department) ~ "CS",
-                                grepl("Political Science", Department) ~ "Poly Sci", 
-                                grepl("Psychology", Department) ~ "Psych",
-                                grepl("Other", Department) ~ "Faculty/Staff",
-                                TRUE ~ Department)) %>%
-  mutate(Department = factor(Department, levels = dept_levs)) %>% 
-  group_by(Degree, Department) %>%
-  summarize(Freq = n()) %>% 
-  filter(Department != "NA", Degree != "NA") %>% 
-  ggplot(mapping = aes(x = Degree, y = Freq, fill = Department)) + 
-  geom_bar(stat = "identity") + 
-  ylim(0, 20) +
-  #geom_text(aes(label = Freq, y = Freq + 1), vjust = 0, size = 10) +
-  theme_classic() +
-  theme(axis.text.x = element_text(angle = -75, hjust = 0, vjust = 0.5, size = 14), 
-        axis.title.y = element_blank(), 
-        axis.text.y = element_text(size = 12),
-        axis.title.x = element_blank(),
-        legend.position = "top", 
-        legend.text = element_text(size = 10), 
-        legend.title = element_text(size = 10)) + 
-  scale_fill_manual(values = viridis(n = 18))
-
+  scale_fill_brewer(palette = "Paired") 
 
 ggsave("figures/attendance.png", attendance, dpi = 300)
 
-ggsave("figures/degrees.png", careers, dpi = 300)
-
 ```
 
-```{r, out.width = "1000px", out.height = "550px"}
+```{r, out.width = "850px", out.height = "475px", echo = FALSE}
 
 knitr::include_graphics("figures/attendance.png")
 
 ```
 
+
+## Computing Backgrounds of Attendees
+
+
+## Statistical Backgrounds of Attendees
+
+
+## Reasons for Attending 
+
+
+## Resouces Used to Learn `R` 
+
+
 ## Do These Skills Capture What Researchers Use?
 
-## Many Thanks  
+## Future Directions -- Learning Trajectory for Computing with Data  {data-background=#C1C6C8}
+
+## Many Thanks
 
 - Stacey Hancock   
 - Mary Alice Carlson, Jenny Green, & Megan Wickstrom 
