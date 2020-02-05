@@ -4026,11 +4026,19 @@ for(i in 1:dim(rbt)[2]){
 
 <center>
 
-<p></br> </br></p>
+<p></br> </br> </br> </br> <font size="8"></p>
 
 <p>Questions?</p>
 
+<p></font></p>
+
 </article></slide><slide class=""><hgroup><h2>What is <code>R</code>?</h2></hgroup><article  id="what-is-r">
+
+<center>
+
+<pre >inherits(R, &quot;S&quot;) == TRUE</pre>
+
+</center>
 
 <ul class = 'build'>
 <li><p>It’s a dialect of S!</p></li>
@@ -4042,7 +4050,6 @@ for(i in 1:dim(rbt)[2]){
 <li>Graphics were too &ldquo;quick and dirty&rdquo;</li>
 <li>Relatively little ability to build custom tools</li>
 </ul></li>
-<li><p><code>R</code> solved these two key problems.</p></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Why <code>tidyverse</code>?</h2></hgroup><article  id="why-tidyverse">
@@ -4050,14 +4057,14 @@ for(i in 1:dim(rbt)[2]){
 <pre class = 'prettyprint lang-r'>sample_n(airquality, 8)</pre>
 
 <pre >##   Ozone Solar.R Wind Temp Month Day
-## 1    45     252 14.9   81     5  29
-## 2   115     223  5.7   79     5  30
-## 3    NA     258  9.7   81     7  22
-## 4    NA      47 10.3   73     6  27
-## 5    44     192 11.5   86     8  12
-## 6     9      24 13.8   81     8   2
-## 7    11     290  9.2   66     5  13
-## 8    35     274 10.3   82     7  17</pre>
+## 1    NA     287  9.7   74     6   2
+## 2     9      36 14.3   72     8  22
+## 3    78      NA  6.9   86     8   4
+## 4    79     187  5.1   87     7  19
+## 5    NA     250  9.2   92     6  12
+## 6    32      92 12.0   61     5  24
+## 7    91     189  4.6   93     9   4
+## 8    NA     139  8.6   82     7  11</pre>
 
 </article></slide><slide class=""><hgroup><h2>Means of Groups – <code>tidyverse</code></h2></hgroup><article  id="means-of-groups-tidyverse">
 
@@ -4088,9 +4095,7 @@ for(i in 1:dim(rbt)[2]){
 <li><p>What is <code>list()</code>? <!-- It’s a type of R object. --></p></li>
 <li><p>Why is the <code>mean()</code> function just sitting there all by itself? <!-- It is being passed to the subsets of the data frame via a kind of internal lapply(). (Follow up: What is lapply()?) --></p></li>
 <li><p>Is <code>na.rm = TRUE</code> an argument to aggregate()? <!-- No, it is an argument to mean(), but it is being passed to mean() via the ... argument of aggregate(). --></p></li>
-</ol>
-
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>References</h2></hgroup><article  id="references-1"></article></slide>
+</ol></article></slide>
 
 
   <slide class="backdrop"></slide>

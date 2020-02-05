@@ -1070,11 +1070,22 @@ http://bit.ly/theobold_kopriva
 
 </br>
 </br>
+</br>
+</br>
+<font size="8">
 
 Questions? 
 
+</font>
 
 ## What is `R`? 
+
+<center>
+
+```
+inherits(R, "S") == TRUE
+```
+</center>
 
 - It's a dialect of S!   
 
@@ -1086,8 +1097,6 @@ Questions?
 downsides: 
     * Graphics were too “quick and dirty” 
     * Relatively little ability to build custom tools 
-
-- `R` solved these two key problems. 
 
 ## Why `tidyverse`?
 
@@ -1129,5 +1138,3 @@ aggregate(airquality,
 
 4. Is `na.rm = TRUE` an argument to aggregate()? 
 <!-- No, it is an argument to mean(), but it is being passed to mean() via the ... argument of aggregate(). -->
-
-# References
