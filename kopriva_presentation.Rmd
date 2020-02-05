@@ -5,11 +5,9 @@ header-includes: \usepackage{float} \usepackage{bm} \usepackage{multicol} \usepa
   \usepackage{natbib}
 output:
   ioslides_presentation:
-    incremental: yes
-  slidy_presentation:
-    incremental: yes
-  beamer_presentation:
-    incremental: yes
+    incremental: true
+    widescreen: true
+    css: logo.css
 subtitle: </br> Allison Theobold, Ph.D. Candidate in Statistics
 fontsize: 10pt
 ---
@@ -35,9 +33,11 @@ knitr::opts_chunk$set(warning = FALSE)
 ## Outline  
 
 - Research Motivation
-- History & Current Climate of Computing -- Environmental Sciences & Statistics
-- Design, Implementation, and Evaluation of Data Science Workshops for 
-Environmental Science Graduate Students  
+- Climate of Computing -- Environmental Sciences & Statistics
+- Research on Data Science Workshops for Environmental Science Graduate Students 
+    * Design 
+    * Implementation 
+    * Evaluation
 - Considerations & Future Directions
 
 ## A Motivating Vignette  
@@ -255,40 +255,23 @@ be incorporated into currently existing workshop materials?
 4. Does the content of these workshops reflect the computing skills 
 used by environmental science graduate students in their research?  
 
-
-
-<!-- ## Design-Based Implementation Research  -->
-
-<!-- <!-- Improving environmental science graduate students' access to ``powerful,  --> -->
-<!-- <!-- effective learning opportunities'' (Penuel) necessitates understanding the  --> -->
-<!-- <!-- skills required for these students to be successful in their research. --> -->
-
-<!-- - Design-based implementation research (DBIR) offers a model for the  -->
-<!-- design and testing of innovations within learning contexts.  -->
-
-<!--     * Develops usable tools for improving teaching and learning in specific  -->
-<!--     subject matter domains and settings -->
-<!--     * Uses evidence-based improvements  -->
-
-<!-- - The collaborative nature of design research positions members of the community -->
-<!-- as "co-designers of solutions to problems" (Fishman et al., 2013, p. 140) rather -->
-<!-- than bystanders.  -->
-
-
 ## Research Phases 
 
-| Research Question | Design Phase | Data Collected |    
+| <font size="5"> Research Question | <font size="5">Design Phase | <font size="5">Data Collected |    
 |:----------------|:------------:|:----------------:|  
-| What do environmental science faculty members identify as the key computing skills graduate student require to implement statistics in environmental science research?  | Phase 1  | Faculty interviews |  
-| How can the key computing skills identified by environmental science faculty be incorporated into currently existing workshop materials? | Phase 2  | Carpentries curriculum materials |  
+| <font size="5"> What do environmental science faculty members identify as the key computing skills graduate student require to implement statistics in environmental science research?  | <font size="5"> Phase 1  | <font size="5"> Faculty interviews |  
+| <font size="5"> How can these key computing skills be incorporated into currently existing workshop materials? | <font size="5"> Phase 2  | <font size="5"> Carpentries curriculum materials |  
+
+</font>
 
 ## Phases Continued
 
-Research Question | Design Phase | Data Collected |      
-------------------|--------------|----------------|  
-|What are the experiences of individuals attending data science workshops? | Phase 3 |  Pre- and post-workshop surveys|   
-|Does the content of the workshops reflect the data science skills used by graduate students in their research? | Phase 3 | Collection of research (`R`) code |  
+|<font size="5"> Research Question | <font size="5"> Design Phase | <font size="5"> Data Collected |      
+|------------------|:--------------:|:----------------:|  
+| <font size="5"> What are the experiences of individuals attending data science workshops? | <font size="5"> Phase 3 |  <font size="5"> Pre- and post-workshop surveys|   
+| <font size="5"> Does the content of these workshops reflect the data science skills used by graduate students in their research? |  | <font size="5"> Collection of research (`R`) code |  
 
+</font>
 
 <div class="notes">
 
@@ -586,7 +569,7 @@ grid.arrange(wl, len, nrow = 2, widths = c(6, 4))
   flair("geom_histogram")
 ```
 
-```{r, echo = FALSE, warning = FALSE, fig.width = 10, fig.height = 6}
+```{r, echo = FALSE, warning = FALSE, fig.width = 14, fig.height = 8}
 wl <- fish %>%
         ggplot(aes(x = length, y = weight, color = species)) + 
         geom_point()
@@ -1147,4 +1130,4 @@ aggregate(airquality,
 4. Is `na.rm = TRUE` an argument to aggregate()? 
 <!-- No, it is an argument to mean(), but it is being passed to mean() via the ... argument of aggregate(). -->
 
-
+# References
