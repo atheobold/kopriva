@@ -32,13 +32,14 @@ knitr::opts_chunk$set(warning = FALSE)
 
 ## Outline  
 
-<img src="figures/hamburger.jpg" style="float:right">
+<img src="figures/hamburger.jpg" style="float:right"> <p>
 
 - Research Motivation  
-</br>
+
 - Climate of Computing -- Environmental Sciences & Statistics  
 
-- Research on Data Science Workshops   
+- Research on Data Science Workshops  
+
     * Design  
     
     * Implementation   
