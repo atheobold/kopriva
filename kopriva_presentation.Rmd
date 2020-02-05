@@ -1,14 +1,17 @@
 ---
 title: "Designing Data Science Workshops for Data-Intensive Scientific Research"
-subtitle: "</br> Allison Theobold, Ph.D. Candidate in Statistics"
-author: 'Kopriva Seminar Series </br> February 6, 2020'
+author: "Kopriva Seminar Series </br> February 6, 2020"
+header-includes: \usepackage{float} \usepackage{bm} \usepackage{multicol} \usepackage{graphicx}
+  \usepackage{natbib}
 output:
   ioslides_presentation:
     incremental: yes
+  slidy_presentation:
+    incremental: yes
   beamer_presentation:
     incremental: yes
+subtitle: </br> Allison Theobold, Ph.D. Candidate in Statistics
 fontsize: 10pt
-header-includes: \usepackage{float} \usepackage{bm} \usepackage{multicol} \usepackage{graphicx} \usepackage{natbib}
 ---
 
 <style type="text/css">
@@ -31,12 +34,11 @@ knitr::opts_chunk$set(warning = FALSE)
 
 ## Outline  
 
-- Study Motivation  
-- Research Questions  
-- Pilot Study & Faculty Interviews  
-- Study Design for Workshops  
-- Data Collection & Analysis    
-- Benefits of Research
+- Research Motivation
+- History & Current Climate of Computing -- Statistics & Environmental Sciences
+- Design, Implementation, and Evaluation of Data Science Workshops for 
+Environmental Science Graduate Students  
+- Considerations & Future Directions
 
 ## A Motivating Vignette  
 
@@ -75,7 +77,7 @@ _Faced with this issue of data reorganizing, what would you do?_
   _What resources would you use?_  
 
 
-## Motivation 
+## Data-Intensive Research  
 
 - Changing practice of environmental science has changed, because of growth in 
 computational power and the volume and variety of available data. 
@@ -209,7 +211,7 @@ practice continues to widen" (Cobb, 2015).
 friendly `R` tools (Wickham). 
 
 - In 2012 `RMarkdown` was created, as an easy-to-use system for embedding code 
-chunks (`R`, Python, etc.) in Markdown documents. 
+chunks in Markdown documents. 
 
 
 <!-- * Breaking the copy-and-paste workflow of an antiquated user-interface  -->
@@ -220,8 +222,8 @@ chunks (`R`, Python, etc.) in Markdown documents.
     
 - In 2014 the American Statistical Association updated the guidelines for 
 undergraduate programs in Statistics. 
-    * The new guidelines included an increased emphasis on data science skills. 
-    
+
+<!-- The new guidelines included an increased emphasis on data science skills.  -->
 <!-- 1. access and manipulate data in various ways -->
 <!-- 2. use a variety of computational approaches to extract meaning from data  -->
 <!-- 3. program in higher-level languages -->
@@ -327,8 +329,8 @@ than bystanders.
 
 ## Phases Continued
 
-Research Question | Design Phase & Data Collected|    
-------------------|------------------------------  
+Research Question | Design Phase | Data Collected |      
+------------------|--------------|----------------|  
 |What are the experiences of individuals attending data science workshops? | Phase 3 |  Pre- and post-workshop surveys|   
 |Does the content of the workshops reflect the data science skills used by graduate students in their research? | Phase 3 | Collection of research (`R`) code |  
 
@@ -420,8 +422,8 @@ working in `R`.
 researchers. 
     * Does not assume that attendees have any prior knowledge before attending 
     the workshops
-    * Allows for learners to sets a clear expectation for the pace of 
-    instruction
+    <!-- * Allows for learners to sets a clear expectation for the pace of  -->
+    <!-- instruction -->
 
 - Workshops have the potential to scale more effectively than courses. 
 
@@ -446,8 +448,8 @@ extracting, wrangling, summarizing, and visualizing data with base `R` tools
 - __Intermediate `R`__: relational and logical operators, conditional statements,
 looping, and user-defined functions  
 
-- __Data Wrangling in `R`__: data wrangling with `dplyr`, `stringr`, and 
-`lubridate`, data organization with `tidyr`  
+- __Data Wrangling in `R`__: data wrangling with `dplyr`, `stringr`, `forcats`, 
+and `lubridate`, data organization with `tidyr`  
 
 - __Data Visualization in `R`__: grammar of graphics with `ggplot2`
 
@@ -582,7 +584,7 @@ for(i in 1:dim(rbt)[2]){
 }
 ```
 
-## Data Wrangling 
+## Data Wrangling with `dplyr` and `tidyr` 
 
 ```{r wrangling, echo = FALSE, results = "hide"}
 
@@ -614,7 +616,7 @@ fish %>%
 
 ```
 
-## Data Visualization 
+## Data Visualization with `ggplot2` 
 
 ```{r, echo = FALSE}
 decorate("wl <- fish %>%
@@ -1042,9 +1044,6 @@ skills necessary for graduate-level environmental science research.
 <!-- With novice R programmers, R scripts can end up looking like a junk drawer,  -->
 <!-- with no organization and irrelevant content. -->
  
- - `R` environment
-    * Data access 
-    * Using functions -- naming arguments 
     
 ## Working with Data in `R` 
 
@@ -1063,7 +1062,7 @@ skills necessary for graduate-level environmental science research.
     * Function breaks 
 
 - Repeated operations 
-    * Sequences of steps being copied-and-pasted numerous times 
+    * Sequences of steps being copied-and-pasted 
     * Looping 
     * Vectorization 
     
@@ -1074,6 +1073,7 @@ skills necessary for graduate-level environmental science research.
 
 - Data summaries 
     * Means of groups 
+    * ![](figures/groupmeans.jpg)
     
 - Data visualizations  
     * Adding facets 
@@ -1087,7 +1087,7 @@ skills necessary for graduate-level environmental science research.
     * Focusing on teaching the skills outlined by this research, not currently
     included in the Carpentries curriculum
 
-## Discussion & Future Directions
+## Considerations & Future Directions
 
 - Attendance of these workshops by individuals outside of environmental science
 disciplines brings to question if this type of tailored design work is 
@@ -1128,5 +1128,62 @@ across workshops.
 ![](figures/Rpubs.JPG)
 
 http://bit.ly/theobold_kopriva
+
+
+## What is `R`? 
+
+- It's a dialect of S!   
+
+- "`R` is a free software environment for statistical computing and graphics." 
+
+- "The `tidyverse` is an opinionated collection of R packages designed for data science."
+
+- Created because the commonly used data analysis packages had some key 
+downsides: 
+    * Graphics were too “quick and dirty” 
+    * Relatively little ability to build custom tools 
+
+- `R` solved these two key problems. 
+
+## Why `tidyverse`?
+
+```{r}
+sample_n(airquality, 8)
+```
+
+## Means of Groups -- `tidyverse`
+
+```{r, eval = FALSE}
+group_by(airquality, Month) %>% 
+  summarize(o3 = mean(Ozone, na.rm = TRUE))
+```
+
+```{r}
+aggregate(airquality, 
+          list(Month = airquality[, "Month"]), 
+          mean, 
+          na.rm = TRUE)
+```
+
+## Why so complicated? 
+
+```{r, eval = FALSE}
+aggregate(airquality, 
+          list(Month = airquality[, "Month"]), 
+          mean, 
+          na.rm = TRUE)
+```
+
+1. What are the square brackets `[` for ? 
+<!-- They are used for subsetting a data frame. -->
+
+2. What is `list()`? 
+<!-- It’s a type of R object. -->
+
+3. Why is the `mean()` function just sitting there all by itself? 
+<!-- It is being passed to the subsets of the data frame via a kind of internal lapply(). (Follow up: What is lapply()?) -->
+
+4. Is `na.rm = TRUE` an argument to aggregate()? 
+<!-- No, it is an argument to mean(), but it is being passed to mean() via the ... argument of aggregate(). -->
 
 
