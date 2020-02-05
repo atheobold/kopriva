@@ -54,7 +54,6 @@ to be a row and every sampling instance to be a different column.
 knitr::include_graphics("figures/wide.jpg")
 ``` 
 
-
 ## Data Problems  
 
 The `R` functions you saw in your courses require for your data to be in long 
@@ -63,7 +62,6 @@ format.
 ```{r, out.width = "500px", echo = FALSE, fig.align='center'}
 knitr::include_graphics("figures/long.jpg")
 ``` 
-
 
 ## What Would You Do?  {.vcenter}
 
