@@ -32,13 +32,21 @@ knitr::opts_chunk$set(warning = FALSE)
 
 ## Outline  
 
-- Research Motivation
-- Climate of Computing -- Environmental Sciences & Statistics
-- Research on Data Science Workshops for Environmental Science Graduate Students 
-    * Design 
-    * Implementation 
-    * Evaluation
+<img src="figures/hamburger.jpg" style="float:right">
+
+- Research Motivation  
+</br>
+- Climate of Computing -- Environmental Sciences & Statistics  
+
+- Research on Data Science Workshops   
+    * Design  
+    
+    * Implementation   
+    
+    * Evaluation   
+    
 - Considerations & Future Directions
+
 
 ## A Motivating Vignette  
 
@@ -68,8 +76,12 @@ knitr::include_graphics("figures/long.jpg")
 - Changing practice of environmental science has changed, because of growth in 
 computational power and the volume and variety of available data. 
 
+</br>
+
 - Advances in technology have made computationally heavy applications of data 
 science techniques essential understandings for environmental science research.
+
+</br>
 
 <!-- management and coalition of large data sets, high frequency spatial and temporal -->
 <!-- data visualization, and hierarchical Bayesian modeling -->
@@ -88,6 +100,7 @@ undergraduate ecology courses.
     research. 
     
 <!-- such as workflows, databases, and reproducibility -->
+</br>
 
 - A 2012 survey of graduate students: 
 
@@ -141,12 +154,16 @@ sciences has become  vital.
 statistics [courses]," because "they have done very little actual data analysis"
 (Nolan & Temple Lang, 2010).  
 
+</br>
+
 - Students are either "told to learn how to program by themselves, from each 
 other, or from their teaching assistant in a two-week "crash course" at the 
 start of a course." 
 
 <!-- * Sends a signal to students that computing is not of intellectual  -->
 <!-- importance (Nolan & Temple Lang, 2010)   -->
+
+</br>
 
 - "What we teach [in Statistics] lags decades behind what we practice" and "the 
 gap between our half-century-old curriculum and our contemporary statistical 
@@ -199,6 +216,8 @@ need for them is widely recognized?
     * Not all institutions have the flexibility to develop courses. 
 <!-- for discipline specific computational techniques.    -->
 
+</br>
+
 - This lack of training in computational skills impedes the progress of 
 scientific research, sends the signal to students that computing is not of 
 intellectual importance, and is laden with hidden costs. 
@@ -222,6 +241,7 @@ researchers worldwide. In person, hands-on, two-day workshops, with publicly
 available lessons for specific populations of researchers. 
 
     * Software Carpentry 
+
     * Data Carpentry 
     
 <!-- Since November 2011, we have taught over 16,000 learners in 1659 workshops in 51 countries, with over 500 instructors.     -->
@@ -247,10 +267,13 @@ video lessons with coding challenges and projects.
 skills graduate students require to implement statistics for research in their 
 field?   
 
+
 2. How can the key computing skills identified by environmental science faculty 
 be incorporated into currently existing workshop materials?  
 
-3. What are the experiences of individuals attending data science workshops?  
+
+3. What are the experiences of individuals attending data science workshops?   
+
 
 4. Does the content of these workshops reflect the computing skills 
 used by environmental science graduate students in their research?  
@@ -324,11 +347,12 @@ in each workshop.
 <!-- faculty member emphasized:  -->
 
 - Working with Data  
-   * "Organize their data and get it in a way that can be used by `R`" 
+   * "Organize their data and get it in a way that can be used by `R`"   
     <!-- storing data, managing data, merging data, collating data, reorganizing data formats -->
 
 - Data Visualization  
-   * Ability to create visualizations of their data early and often  
+   * Ability to create visualizations of their data early and often    
+
 
 - Reproducibility   
     * "Manipulating data in ways that are repeatable"  
@@ -339,11 +363,15 @@ in each workshop.
 ## Expectations Acquiring Skills 
 
 - Faculty voiced the expectation that students learn these skills on their own.    
+
     * "I think that more and more in our field my generation is sort of just 
 catching up the next generation."  
+
+
     * "Increasingly faculty feel that way like they're they're not at the forefront
 of the programming abilities and so their students are kind of being self-taught
 and then are often ahead of them."  
+
     * "I feel personally out of touch, because [students] work in `R` and I 
 haven't taken the time to learn `R`, because of my training and my age."
 
@@ -355,6 +383,8 @@ computational skills are scarce (Teal et al., 2015).
     * Current resources assume learners have a basic level of understanding of 
 working in `R`.  
 
+</br>
+
 - The Carpentries develop publicly available lessons for specific populations of
 researchers. 
     * Does not assume that attendees have any prior knowledge before attending 
@@ -362,17 +392,22 @@ researchers.
     <!-- * Allows for learners to sets a clear expectation for the pace of  -->
     <!-- instruction -->
 
+</br>
+
 - Workshops have the potential to scale more effectively than courses. 
 
 ## Workshop Development 
 
 - In 2017, I developed a suite of four 3-hour data science workshops.  
+    
     * The skills distilled from interviews with faculty members were infused 
     into Data & Software Carpentry `R` lessons. 
+    
     * The interactive structure empowers researchers to conduct the computing 
     necessary for their analyses, in an effective and reproducible way.
 <!-- when learning to program is embedded in exploring, making conjectures, and 
 looking for evidence, students learn the computational concepts while building confidence -->
+    
     * The environmental science context allows researchers to see immediately 
     how the computational skills they are learning directly relate to their own
     research. 
@@ -382,11 +417,17 @@ looking for evidence, students learn the computational concepts while building c
 - __Introduction to `R`__: objects in `R`, working in `R`, inspecting, 
 extracting, wrangling, summarizing, and visualizing data with base `R` tools
 
+</br>
+
 - __Intermediate `R`__: relational and logical operators, conditional statements,
 looping, and user-defined functions  
 
+</br>
+
 - __Data Wrangling in `R`__: data wrangling with `dplyr`, `stringr`, `forcats`, 
 and `lubridate`, data organization with `tidyr`  
+
+</br>
 
 - __Data Visualization in `R`__: grammar of graphics with `ggplot2`
 
@@ -964,6 +1005,8 @@ all_ws %>%
 students provides insight into the key data science skills necessary for 
 research in these fields 
 
+</br>
+
 - Aids in reevaluating the content of these workshops, to ensure they cover the
 skills necessary for graduate-level environmental science research.
 
@@ -972,6 +1015,8 @@ skills necessary for graduate-level environmental science research.
 - Using `R` projects to promote better workflow practices  
     * Working directories
     * Organized folder directory 
+
+</br>
 
 - Using `RMarkdown` documents to promote better script writing 
     * Organized sections of code 
@@ -986,6 +1031,8 @@ skills necessary for graduate-level environmental science research.
 
 - Handing a variety of data structures 
 
+</br>
+
 - Wrangling data  
     * Selecting columns 
     * Filtering rows or elements
@@ -997,6 +1044,8 @@ skills necessary for graduate-level environmental science research.
 - Conditional statements
     * Mutating existing variables
     * Function breaks 
+
+</br>
 
 - Repeated operations 
     * Sequences of steps being copied-and-pasted 
@@ -1010,6 +1059,8 @@ skills necessary for graduate-level environmental science research.
     * Statistical summaries of groups 
     * ![](figures/groupmeans.jpg)
 
+</br>
+
 - Data visualizations  
     * Adding facets 
     * Plotting specifications
@@ -1017,6 +1068,8 @@ skills necessary for graduate-level environmental science research.
 ## Dissemination of Research 
 
 - Infusing the skills outlined by this research into Data Carpentry's _Data Analysis and Visualization in `R` for Ecologists_ curriculum
+
+</br>
 
 - Creating lessons through the Carpentries Incubator and Carpentries Lab
     * Focusing on teaching the skills outlined by this research, not currently
@@ -1064,19 +1117,26 @@ across workshops.
 
 http://bit.ly/theobold_kopriva
 
-## 
+## Thank you! 
 
-<center> 
+Workshop Repository:  
+
+https://github.com/atheobold/data-science-workshops
+
+</br> 
+
+Workshops in RStudio Cloud:
+
+http://bit.ly/introductionR  
+http://bit.ly/intermediate-R  
+http://bit.ly/data-vizz  
+http://bit.ly/data-wrangle  
 
 </br>
-</br>
-</br>
-</br>
-<font size="8">
+allisontheobld@montana.edu  
+http://www.math.montana.edu/allison_theobold/  
+@mtstatistics
 
-Questions? 
-
-</font>
 
 ## What is `R`? 
 
