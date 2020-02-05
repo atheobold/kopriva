@@ -297,24 +297,20 @@ used by environmental science graduate students in their research?
 
 </font>
 
-<div class="notes">
+<!-- To investigate these questions, we executed a three-phase design-based -->
+<!-- implementation research model. -->
 
-To investigate these questions, we executed a three-phase design-based
-implementation research model.
+<!-- In the first phase, we conducted in-depth interviews with faculty -->
+<!-- from environmental science fields regarding the computational skills they  -->
+<!-- believe are necessary for graduate students to succeed  in their research. -->
 
-In the first phase, we conducted in-depth interviews with faculty
-from environmental science fields regarding the computational skills they 
-believe are necessary for graduate students to succeed  in their research.
+<!-- Phase two then focused on adapting currently existing  workshop resources to -->
+<!-- design of a series of data science workshops targeting the key computational  -->
+<!-- skills distilled from these interviews. -->
 
-Phase two then focused on adapting currently existing  workshop resources to
-design of a series of data science workshops targeting the key computational 
-skills distilled from these interviews.
-
-The final phase consisted of implementing the workshops and collecting survey  
-responses from the workshop attendees regarding their experiences participating
-in each workshop.
-
-</div>
+<!-- The final phase consisted of implementing the workshops and collecting survey   -->
+<!-- responses from the workshop attendees regarding their experiences participating -->
+<!-- in each workshop. -->
 
 <!-- ## Phase 1: Faculty Interviews -->
 
@@ -510,7 +506,6 @@ decorate("hist") %>%
   flair("hist")
 
 ```
-
 ```{r, echo = TRUE, message = FALSE, warning = FALSE, fig.width = 3, fig.height = 4.5}
 hist(fish$length, bins = 45)
 ```
