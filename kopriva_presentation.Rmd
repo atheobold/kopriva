@@ -35,7 +35,7 @@ knitr::opts_chunk$set(warning = FALSE)
 ## Outline  
 
 - Research Motivation
-- History & Current Climate of Computing -- Statistics & Environmental Sciences
+- History & Current Climate of Computing -- Environmental Sciences & Statistics
 - Design, Implementation, and Evaluation of Data Science Workshops for 
 Environmental Science Graduate Students  
 - Considerations & Future Directions
@@ -63,18 +63,6 @@ format.
 knitr::include_graphics("figures/long.jpg")
 ``` 
 
-## What Would You Do?  {.vcenter}
-
-<div style="font-size:1.5em">
-
-</br>
-</br>
-
-_Faced with this issue of data reorganizing, what would you do?_  
-
-  _What resources would you use?_  
-
-
 ## Data-Intensive Research  
 
 - Changing practice of environmental science has changed, because of growth in 
@@ -89,21 +77,6 @@ science techniques essential understandings for environmental science research.
 - These advances have created a growing need for scientists to receive an 
 appropriate education in computational methods and techniques relevant to their
 discipline.  
-
-## History of Computing -- Environmental Sciences 
-
-- Andelman and colleagues (2000), reflected that their students were 
-unprepared with both the statistical and computational skills necessary for 
-data analysis.   
-
-    * 93% of students did not have skills in the scripted programming languages 
-    necessary for the integration of large data sets. 
-    * The greatest limitation students faced was related to data concatenation,
-    manipulation, and analysis.  
-
-- Calls surfaced to re-evaluate the curriculum, to "better prepare current and 
-future generations of environmental researchers" (Green et al., 2005).   
-
 
 ## (Lack of) Computing in Environmental Sciences  
 
@@ -162,23 +135,6 @@ sciences has become  vital.
     graduate programs, across the nation.  
     
     
-## History of Computing -- Statistics 
-
-- "Computing has been one of the most glaring omissions in the set of tools that
-have so far defined Statistics education" (Friedman, 2001).  
-
-- Statistics' commitment to data modeling has prevented the field from entering 
-new arenas where "the data being gathered is not suitable for analysis by 
-data models" (Breiman, 2001, p. 200). 
-
-<!-- Hence, Statisticians should become more familiar with  -->
-<!-- algorithmic modeling, to address this significant change in the data landscape.  -->
-
-- Brown and Kass argued that "to remain vibrant, [Statistics] must open up by 
-taking a less restrictive view of what constitutes statistical training"
-(Brown & Kass, 2009, p. 105).
-
-
 ## (Lack of) Computing in Statistics 
 
 - "Most of our students are not prepared for data analysis after their 
@@ -233,6 +189,16 @@ necessary for a clean data science workflow.
 
 ## Barriers to Incorporating Computing    
 
+- But why are these skills still so rarely included in the curriculum when the 
+need for them is widely recognized?  
+
+    * Courses are potentially taught by people who may not feel prepared teach 
+    these topics. 
+    * Attempting to fit more material into already-full courses and curricula. 
+    * Not clear what computing topics should be included and how.  
+    * Not all institutions have the flexibility to develop courses. 
+<!-- for discipline specific computational techniques.    -->
+
 - This lack of training in computational skills impedes the progress of 
 scientific research, sends the signal to students that computing is not of 
 intellectual importance, and is laden with hidden costs. 
@@ -243,16 +209,6 @@ intellectual importance, and is laden with hidden costs.
 <!--     * initial knowledge severely limits them  -->
 <!--     * spend weeks or months on tasks that could be done in hours or days -->
 <!--     * they may be unaware of the reliability and reproducibility of their results -->
-
-- But why are these skills still so rarely included in the curriculum when the 
-need for them is widely recognized?  
-
-    * Courses are potentially taught by people who may not feel prepared teach 
-    these topics. 
-    * Attempting to fit more material into already-full courses and curricula. 
-    * Not clear what computing topics should be included and how.  
-    * Not all institutions have the flexibility to develop courses. 
-<!-- for discipline specific computational techniques.    -->
 
 
 ## Resources for Learning `R` 
@@ -300,22 +256,23 @@ be incorporated into currently existing workshop materials?
 used by environmental science graduate students in their research?  
 
 
-## Design-Based Implementation Research 
 
-<!-- Improving environmental science graduate students' access to ``powerful,  -->
-<!-- effective learning opportunities'' (Penuel) necessitates understanding the  -->
-<!-- skills required for these students to be successful in their research. -->
+<!-- ## Design-Based Implementation Research  -->
 
-- Design-based implementation research (DBIR) offers a model for the 
-design and testing of innovations within learning contexts. 
+<!-- <!-- Improving environmental science graduate students' access to ``powerful,  --> -->
+<!-- <!-- effective learning opportunities'' (Penuel) necessitates understanding the  --> -->
+<!-- <!-- skills required for these students to be successful in their research. --> -->
 
-    * Develops usable tools for improving teaching and learning in specific 
-    subject matter domains and settings
-    * Uses evidence-based improvements 
-    
-- The collaborative nature of design research positions members of the community
-as "co-designers of solutions to problems" (Fishman et al., 2013, p. 140) rather
-than bystanders. 
+<!-- - Design-based implementation research (DBIR) offers a model for the  -->
+<!-- design and testing of innovations within learning contexts.  -->
+
+<!--     * Develops usable tools for improving teaching and learning in specific  -->
+<!--     subject matter domains and settings -->
+<!--     * Uses evidence-based improvements  -->
+
+<!-- - The collaborative nature of design research positions members of the community -->
+<!-- as "co-designers of solutions to problems" (Fishman et al., 2013, p. 140) rather -->
+<!-- than bystanders.  -->
 
 
 ## Research Phases 
@@ -352,7 +309,7 @@ in each workshop.
 
 </div>
 
-## Phase 1: Faculty Interviews
+<!-- ## Phase 1: Faculty Interviews -->
 
 <!-- In the spring of 2017 and fall of 2018, faculty members from diverse  -->
 <!-- fields within the environmental sciences were invited to participate in a  -->
@@ -363,20 +320,20 @@ in each workshop.
 <!-- Range Sciences, and Plant Sciences \& Plant Pathology departments were emailed  --> 
 <!-- requesting their participation in this research. -->
 
-<font size="2">
+<!-- <font size="2"> -->
 
-|Department| Faculty Invited | Faculty Interviewed |  
-|:---------|:---------------:|:-------------------:|  
-|Animal & Range Sciences | 7  | 2 |  
-|Ecology | 15 | 8 |  
-|Land Resources Environmental Sciences | 24 | 8 |  
-|Plant Sciences & Plant Pathology | 15 | 5 |  
+<!-- |Department| Faculty Invited | Faculty Interviewed |   -->
+<!-- |:---------|:---------------:|:-------------------:|   -->
+<!-- |Animal & Range Sciences | 7  | 2 |   -->
+<!-- |Ecology | 15 | 8 |   -->
+<!-- |Land Resources Environmental Sciences | 24 | 8 |   -->
+<!-- |Plant Sciences & Plant Pathology | 15 | 5 |   -->
 
-</font>
+<!-- </font> -->
 
-- Faculty members from environmental science fields were interviewed 
-regarding the computational skills they believed were necessary for graduate 
-students to succeed in their research.   
+<!-- - Faculty members from environmental science fields were interviewed  -->
+<!-- regarding the computational skills they believed were necessary for graduate  -->
+<!-- students to succeed in their research.    -->
 
 ## Computational Expectations
 
@@ -408,11 +365,10 @@ and then are often ahead of them."
 haven't taken the time to learn `R`, because of my training and my age."
 
 
-## Benefits of Statistical Computing Workshops
+## Benefits of Data Science Workshops
 
 - Approachable training resources for researchers hoping to develop 
-computational skills are scarce and "there is little space in the existing 
-curriculum for courses or additional lectures" (Teal et al., 2015).   
+computational skills are scarce (Teal et al., 2015).   
     * Current resources assume learners have a basic level of understanding of 
 working in `R`.  
 
@@ -1062,17 +1018,15 @@ skills necessary for graduate-level environmental science research.
 - Repeated operations 
     * Sequences of steps being copied-and-pasted 
     * Looping 
+    * User-defined functions
     * Vectorization 
-    
-- User-defined functions 
-    * Function scoping
     
 ## Data Presentations  
 
 - Data summaries 
-    * Means of groups 
+    * Statistical summaries of groups 
     * ![](figures/groupmeans.jpg)
-    
+
 - Data visualizations  
     * Adding facets 
     * Plotting specifications
@@ -1087,9 +1041,11 @@ skills necessary for graduate-level environmental science research.
 
 ## Considerations & Future Directions
 
-- Attendance of these workshops by individuals outside of environmental science
-disciplines brings to question if this type of tailored design work is 
+- Attendance of these workshops by many individuals outside of environmental 
+science disciplines brings to question if this type of tailored design work is 
 necessary. 
+    * Are there common data science skills necessary for research in __any__ 
+scientific field? 
 
 <!-- Over a third of the workshop attendees came from disciplines outside of  -->
 <!-- environmental sciences.  -->
@@ -1097,8 +1053,6 @@ necessary.
 <!-- Strikingly, these attendees reported similar workshop experiences to attendees  -->
 <!-- from these targeted disciplines. -->
 
-- Are there common data science skills necessary for research in __any__ 
-scientific field? 
  
 - A larger number of attendees from environmental science fields persisted 
 across workshops.   
@@ -1126,6 +1080,15 @@ across workshops.
 ![](figures/Rpubs.JPG)
 
 http://bit.ly/theobold_kopriva
+
+## 
+
+<center> 
+
+</br>
+</br>
+
+Questions? 
 
 
 ## What is `R`? 
