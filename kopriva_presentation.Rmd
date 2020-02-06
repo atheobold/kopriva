@@ -8,7 +8,7 @@ output:
     incremental: true
     widescreen: true
     css: logo.css
-subtitle: </br> Allison Theobold, Ph.D. Candidate in Statistics
+subtitle: "Allison Theobold, Ph.D. Candidate in Statistics </br> Adviser: Dr. Stacey Hancock"
 fontsize: 10pt
 ---
 
@@ -51,21 +51,22 @@ knitr::opts_chunk$set(warning = FALSE)
 
 ## A Motivating Vignette  
 
-- Suppose you are an Ecology graduate student studying the abundance of wild and
+Suppose you are an Ecology graduate student studying the abundance of wild and
 hatchery-raised pallid sturgeon. You have collected data over the last 2 years 
 on fish abundance along the same reaches of the Missouri River, to look for 
 trends in fish abundance.  
 
-- When recording your data in Excel, you chose for each section of the Missouri 
-to be a row and every sampling instance to be a different column.   
+<!-- When recording your data in Excel, you chose for each section of the Missouri  -->
+<!-- to be a row and every sampling instance to be a different column.    -->
 
-```{r, out.width = "600px", echo = FALSE, fig.align='center'}
+```{r, out.width = "600px", echo = FALSE, fig.align='right'}
 knitr::include_graphics("figures/wide.jpg")
 ``` 
 
+
 ## Data Problems  
 
-The `R` functions you saw in your courses require for your data to be in long 
+But the `R` functions you saw in your courses require for your data to be in long 
 format.
 
 ```{r, out.width = "500px", echo = FALSE, fig.align='center'}
@@ -179,11 +180,11 @@ practice continues to widen" (Cobb, 2015).
 
 </center>
 
-- In 2005  the `ggplot2` was created, a midst the conversation for creating user 
-friendly `R` tools (Wickham). 
+</br>
 
-- In 2012 `RMarkdown` was created, as an easy-to-use system for embedding code 
-chunks in Markdown documents. 
+- 2005: `ggplot2` beginning of user friendly `R` tools (Wickham)
+
+- 2012: `RMarkdown` for embedding code in reports
 
 
 <!-- * Breaking the copy-and-paste workflow of an antiquated user-interface  -->
@@ -192,16 +193,14 @@ chunks in Markdown documents.
 <!-- With calls for transforming undergraduate statistics education resounding -->
 <!-- nationally  -->
     
-- In 2014 the American Statistical Association updated the guidelines for 
-undergraduate programs in Statistics. 
+- 2014: ASA updated guidelines for undergraduate programs in Statistics 
 
 <!-- The new guidelines included an increased emphasis on data science skills.  -->
 <!-- 1. access and manipulate data in various ways -->
 <!-- 2. use a variety of computational approaches to extract meaning from data  -->
 <!-- 3. program in higher-level languages -->
 
-- In 2017, the `tidyverse` package came into being, housing all of the packages
-necessary for a clean data science workflow. 
+- 2017: `tidyverse` houses all of the packages necessary for a clean data science workflow 
 
 <!-- import, tidy, transform, wrangle, visualize, and model data  -->
 
@@ -230,6 +229,84 @@ intellectual importance, and is laden with hidden costs.
 <!--     * spend weeks or months on tasks that could be done in hours or days -->
 <!--     * they may be unaware of the reliability and reproducibility of their results -->
 
+
+## Research Questions  
+
+1. What do environmental science faculty members identify as the key computing 
+skills graduate students require to implement statistics for research in their 
+field?   
+
+
+2. How can the key computing skills identified by environmental science faculty 
+be incorporated into currently existing workshop materials?  
+
+
+3. What are the experiences of individuals attending data science workshops?   
+
+
+4. Does the content of these workshops reflect the computing skills 
+used by environmental science graduate students in their research?  
+
+## Research Phases 
+
+<!-- To investigate these questions, we executed a three-phase design-based -->
+<!-- implementation research model. -->
+
+| <font size="5"> Research Question | <font size="5">Design Phase | <font size="5">Data Collected |    
+|:----------------|:------------:|:----------------:|  
+| <font size="5"> What do environmental science faculty members identify as the key computing skills graduate student require to implement statistics in environmental science research?  | <font size="5"> Phase 1  | <font size="5"> Faculty interviews |  
+| <font size="5"> How can these key computing skills be incorporated into currently existing workshop materials? | <font size="5"> Phase 2  | <font size="5"> Carpentries curriculum materials |  
+
+</font>
+
+<!-- - Faculty members from environmental science fields were interviewed  -->
+<!-- regarding the computational skills they believed were necessary for graduate  -->
+<!-- students to succeed in their research.    -->
+
+<!-- Phase two then focused on adapting currently existing  workshop resources to -->
+<!-- design of a series of data science workshops targeting the key computational  -->
+<!-- skills distilled from these interviews. -->
+
+
+## Phases Continued
+
+|<font size="5"> Research Question | <font size="5"> Design Phase | <font size="5"> Data Collected |      
+|------------------|:--------------:|:----------------:|  
+| <font size="5"> What are the experiences of individuals attending data science workshops? | <font size="5"> Phase 3 |  <font size="5"> Pre- and post-workshop surveys|   
+| <font size="5"> Does the content of these workshops reflect the data science skills used by graduate students in their research? |  | <font size="5"> Collection of research (`R`) code |  
+
+</font>
+
+<!-- The final phase consisted of implementing the workshops and collecting survey   -->
+<!-- responses from the workshop attendees regarding their experiences participating -->
+<!-- in each workshop. -->
+
+
+## Computational Expectations
+
+- Working with Data  
+   * "Organize their data and get it in a way that can be used by `R`"   
+    <!-- storing data, managing data, merging data, collating data, reorganizing data formats -->
+
+- Data Visualization  
+   * Ability to create visualizations of their data early and often    
+
+
+- Reproducibility   
+    * "Manipulating data in ways that are repeatable"  
+
+- Data Context  
+    * Importance of students acquiring computing skills in familiar data contexts     
+
+## Expectations Acquiring Skills 
+
+Faculty voiced the expectation that students learn these skills on their own.    
+
+- "I think that more and more in our field my generation is sort of just catching up the next generation."  
+
+- "Increasingly faculty feel that way like they're they're not at the forefront of the programming abilities and so their students are kind of being self-taught and then are often ahead of them."  
+
+- "I feel personally out of touch, because [students] work in `R` and I haven't taken the time to learn `R`, because of my training and my age."
 
 ## Resources for Learning `R` 
 
@@ -262,117 +339,6 @@ video lessons with coding challenges and projects.
 <!-- These resources may not reflect the computing needs of a specific community.  -->
 
 
-## Research Questions  
-
-1. What do environmental science faculty members identify as the key computing 
-skills graduate students require to implement statistics for research in their 
-field?   
-
-
-2. How can the key computing skills identified by environmental science faculty 
-be incorporated into currently existing workshop materials?  
-
-
-3. What are the experiences of individuals attending data science workshops?   
-
-
-4. Does the content of these workshops reflect the computing skills 
-used by environmental science graduate students in their research?  
-
-## Research Phases 
-
-| <font size="5"> Research Question | <font size="5">Design Phase | <font size="5">Data Collected |    
-|:----------------|:------------:|:----------------:|  
-| <font size="5"> What do environmental science faculty members identify as the key computing skills graduate student require to implement statistics in environmental science research?  | <font size="5"> Phase 1  | <font size="5"> Faculty interviews |  
-| <font size="5"> How can these key computing skills be incorporated into currently existing workshop materials? | <font size="5"> Phase 2  | <font size="5"> Carpentries curriculum materials |  
-
-</font>
-
-## Phases Continued
-
-|<font size="5"> Research Question | <font size="5"> Design Phase | <font size="5"> Data Collected |      
-|------------------|:--------------:|:----------------:|  
-| <font size="5"> What are the experiences of individuals attending data science workshops? | <font size="5"> Phase 3 |  <font size="5"> Pre- and post-workshop surveys|   
-| <font size="5"> Does the content of these workshops reflect the data science skills used by graduate students in their research? |  | <font size="5"> Collection of research (`R`) code |  
-
-</font>
-
-<!-- To investigate these questions, we executed a three-phase design-based -->
-<!-- implementation research model. -->
-
-<!-- In the first phase, we conducted in-depth interviews with faculty -->
-<!-- from environmental science fields regarding the computational skills they  -->
-<!-- believe are necessary for graduate students to succeed  in their research. -->
-
-<!-- Phase two then focused on adapting currently existing  workshop resources to -->
-<!-- design of a series of data science workshops targeting the key computational  -->
-<!-- skills distilled from these interviews. -->
-
-<!-- The final phase consisted of implementing the workshops and collecting survey   -->
-<!-- responses from the workshop attendees regarding their experiences participating -->
-<!-- in each workshop. -->
-
-<!-- ## Phase 1: Faculty Interviews -->
-
-<!-- In the spring of 2017 and fall of 2018, faculty members from diverse  -->
-<!-- fields within the environmental sciences were invited to participate in a  -->
-<!-- one-hour interview. 
-
-<!-- All faculty members currently overseeing a graduate student  --> 
-<!-- from the Ecology, Land Resources Environmental Science, Animal \&  --> 
-<!-- Range Sciences, and Plant Sciences \& Plant Pathology departments were emailed  --> 
-<!-- requesting their participation in this research. -->
-
-<!-- <font size="2"> -->
-
-<!-- |Department| Faculty Invited | Faculty Interviewed |   -->
-<!-- |:---------|:---------------:|:-------------------:|   -->
-<!-- |Animal & Range Sciences | 7  | 2 |   -->
-<!-- |Ecology | 15 | 8 |   -->
-<!-- |Land Resources Environmental Sciences | 24 | 8 |   -->
-<!-- |Plant Sciences & Plant Pathology | 15 | 5 |   -->
-
-<!-- </font> -->
-
-<!-- - Faculty members from environmental science fields were interviewed  -->
-<!-- regarding the computational skills they believed were necessary for graduate  -->
-<!-- students to succeed in their research.    -->
-
-## Computational Expectations
-
-<!-- Computational expectations varied across fields of research, however, every  -->
-<!-- faculty member emphasized:  -->
-
-- Working with Data  
-   * "Organize their data and get it in a way that can be used by `R`"   
-    <!-- storing data, managing data, merging data, collating data, reorganizing data formats -->
-
-- Data Visualization  
-   * Ability to create visualizations of their data early and often    
-
-
-- Reproducibility   
-    * "Manipulating data in ways that are repeatable"  
-
-- Data Context  
-    * Importance of students acquiring computing skills in familiar data contexts     
-
-## Expectations Acquiring Skills 
-
-- Faculty voiced the expectation that students learn these skills on their own.    
-
-    * "I think that more and more in our field my generation is sort of just 
-catching up the next generation."  
-
-
-    * "Increasingly faculty feel that way like they're they're not at the forefront
-of the programming abilities and so their students are kind of being self-taught
-and then are often ahead of them."  
-
-    * "I feel personally out of touch, because [students] work in `R` and I 
-haven't taken the time to learn `R`, because of my training and my age."
-
-
 ## Benefits of Data Science Workshops
 
 - Approachable training resources for researchers hoping to develop 
@@ -395,38 +361,22 @@ researchers.
 
 ## Workshop Development 
 
-- In 2017, I developed a suite of four 3-hour data science workshops.  
+In 2017, I developed a suite of four 3-hour data science workshops.  
     
-    * The skills distilled from interviews with faculty members were infused 
-    into Data & Software Carpentry `R` lessons. 
+- Content: skills distilled from interviews & Data & Software Carpentry `R` lessons. 
     
-    * The interactive structure empowers researchers to conduct the computing 
-    necessary for their analyses, in an effective and reproducible way.
-<!-- when learning to program is embedded in exploring, making conjectures, and 
-looking for evidence, students learn the computational concepts while building confidence -->
+- Structure: interactive exercises build confidence 
     
-    * The environmental science context allows researchers to see immediately 
-    how the computational skills they are learning directly relate to their own
-    research. 
+- Context: environmental science data promotes learning transfer
 
 ## `R` for Data Science Workshops    
 
-- __Introduction to `R`__: objects in `R`, working in `R`, inspecting, 
-extracting, wrangling, summarizing, and visualizing data with base `R` tools
-
-</br>
-
-- __Intermediate `R`__: relational and logical operators, conditional statements,
-looping, and user-defined functions  
-
-</br>
-
-- __Data Wrangling in `R`__: data wrangling with `dplyr`, `stringr`, `forcats`, 
-and `lubridate`, data organization with `tidyr`  
-
-</br>
-
-- __Data Visualization in `R`__: grammar of graphics with `ggplot2`
+| <font size="5"> |                              |    
+|:----------------|:----------------------------:|  
+| <font size="5"> Introduction to `R` | <font size="5"> objects in `R`, working in `R`, inspecting, extracting, wrangling, summarizing, and visualizing data with base `R` tools |  
+| <font size="5"> Intermediate `R` | <font size="5"> relational and logical operators, conditional statements, looping, and user-defined functions  |  
+| <font size="5"> Data Wrangling in `R` |  <font size="5"> data wrangling with `dplyr`, `stringr`, `forcats`, and `lubridate`, data organization with `tidyr` |  
+| <font size="5"> Data Visualization in `R` | <font size="5"> grammar of graphics with `ggplot2` |
 
 ## Workshop Tools 
 
@@ -480,11 +430,15 @@ and `lubridate`, data organization with `tidyr`
 
 ## Data Context
 
+<font size="5">
+
 ```{r, message = FALSE, warning = FALSE, echo = TRUE, tidy = TRUE}
 fish <- read_csv("data/BlackfootFish.csv")
 
 glimpse(fish)
 ```
+
+</font>
 
 ## Introduction to `R` -- Working with Data 
 
@@ -606,7 +560,7 @@ grid.arrange(wl, len, nrow = 2, widths = c(6, 4))
   flair("geom_histogram")
 ```
 
-```{r, echo = FALSE, warning = FALSE, fig.width = 14, fig.height = 8}
+```{r, echo = FALSE, warning = FALSE, fig.width = 20, fig.height = 10}
 wl <- fish %>%
         ggplot(aes(x = length, y = weight, color = species)) + 
         geom_point()
@@ -724,6 +678,7 @@ attendance <- all_ws %>%
   theme(axis.title.y = element_blank(), 
         axis.text.y = element_text(size = 12),
         axis.title.x = element_blank(),
+        axis.text.x = element_text(size = 12),
         legend.position = "right", 
         legend.text = element_text(size = 10), 
         legend.title = element_text(size = 10)) + 
@@ -733,30 +688,19 @@ ggsave("figures/attendance.png", attendance, dpi = 300)
 
 ```
 
-```{r, out.width = "850px", out.height = "475px", echo = FALSE}
+```{r, out.width = "900px", out.height = "475px", echo = FALSE}
 
 knitr::include_graphics("figures/attendance.png")
 
-```
-
-
-## Workshop Attendance by Topic
-
-```{r, echo = FALSE}
-all_ws %>% 
-  group_by(workshop) %>% 
-  summarize(Freq = n()) %>% 
-  arrange(desc(Freq)) %>% 
-  kable(col.names = c("Workshop", "Attendees"))
 ```
 
 <!-- Many participants attend subsequent workshops, but nearly 60% only attended the -->
 <!-- Introduction to R workshop.  -->
 
 
-## Computing Backgrounds of Attendees
+## Backgrounds of Attendees
 
-```{r, echo = FALSE, eval = FALSE}
+```{r, echo = FALSE, fig.width = 10.5, fig.height = 5}
 all_ws <- 
   all_ws %>% 
   mutate(python = ifelse(str_detect(languages, "Python"), 
@@ -791,42 +735,79 @@ all_ws <-
   )
 
 
-all_ws %>% 
+languages <- all_ws %>% 
   gather(python:SQL, key = "language", value = "familiar") %>% 
+  mutate(language = case_when(language == "other_language" ~ "R", 
+                              language == "java" ~ "JavaScript",
+                              language == "python" ~ "Python",
+                              language == "no_languages" ~ "None",
+                              language == "fortran" ~ "Fortran",
+                              TRUE ~ language ), 
+         Language = language) %>% 
   filter(familiar == "Yes" | familiar == "Unfamiliar" | familiar == "None") %>% 
-  group_by(language) %>%
+  mutate(Language = factor(Language, 
+                           levels = c("None", "R", "Python", "JavaScript", 
+                                      "SQL", "C", "Fortran")
+                           )
+  ) %>% 
+  group_by(Language) %>%
   count(n = n()) %>% 
-  arrange(desc(n))  
+  arrange(desc(n)) %>%
+  mutate(Freq = n) %>% 
+  
+  ggplot(mapping = aes(x = Language, y = Freq, fill = Language)) + 
+  coord_flip() + 
+  geom_bar(stat = "identity") + 
+  ylim(0, 80) +
+  #geom_text(aes(label = Freq, y = Freq + 1), vjust = 0, size = 10) +
+  theme_classic() +
+  theme(axis.title.y = element_blank(), 
+        axis.text.y = element_text(size = 16),
+        axis.title.x = element_blank(),
+        axis.text.x = element_text(size = 14),
+        legend.position = "none") + 
+  scale_fill_brewer(palette = "Paired") 
+
+
+stat_courses <- data.frame(Course = c("Introductory Statistics", 
+                                      "Applied Statistics", 
+                                      "None", 
+                                      "Discipline Specific Intro Stat",
+                                      "Intermediate Statistics", 
+                                      "Experimental Design", 
+                                      "Probability Theory"), 
+                           Freq = c(46, 42, 24, 20, 10, 8, 6))
+                                      
+stat <- stat_courses %>% 
+  mutate(Course = factor(Course, 
+                         levels = c("Introductory Statistics", 
+                                      "Applied Statistics", 
+                                      "None", 
+                                      "Discipline Specific Intro Stat",
+                                      "Intermediate Statistics", 
+                                      "Experimental Design", 
+                                      "Probability Theory")
+                          )
+  ) %>% 
+  ggplot(mapping = aes(x = Course, y = Freq, fill = Course)) + 
+  coord_flip() + 
+  geom_bar(stat = "identity") + 
+  ylim(0, 50) +
+  #geom_text(aes(label = Freq, y = Freq + 1), vjust = 0, size = 10) +
+  theme_classic() +
+  theme(axis.title.y = element_blank(), 
+        axis.text.y = element_text(size = 16),
+        axis.title.x = element_blank(),
+        axis.text.x = element_text(size = 14),
+        legend.position = "none") + 
+  scale_fill_brewer(palette = "Paired") 
+
+grid.arrange(languages, stat, nrow = 1, ncol = 2, widths = c(4, 5))
 ```
-
-
-|Programming Language(s)         | Attendees |  
-|:-------------------------------|:----------|  
-| None                           |  74       |  
-| `R`                            |  36       |  
-| Python                         |  31       |  
-| Java or Javascript             |  14       |  
-| SQL                            |  13       |  
-| C or C++                       |  10       |  
-| Fortran                        |  5        |  
-
-
-## Statistical Backgrounds of Attendees
-
-| Statistics Course(s)           | Attendees |  
-|:-------------------------------|:----------|  
-| Introductory Statistics        |  46       |  
-| Applied Statistics             |  42       |  
-| None                           |  24       |  
-| Discipline Specific Intro Stat |  20       |  
-| Intermediate Statistics        |  10       |  
-| Experimental Design            |  8        |  
-| Probability Theory             |  6        |  
-
 
 ## Reasons for Attending Workshops
 
-```{r, echo = FALSE, eval = FALSE}
+```{r, echo = FALSE, fig.align = "center", fig.width = 6, fig.height = 5}
 all_ws <- 
   all_ws %>% 
   select(-coursework_help:-research_help) %>% 
@@ -892,26 +873,48 @@ all_ws <-
 all_ws %>% 
   gather(grad_or_career_prep:coursework_help, key = "reason", value = "agree") %>% 
   filter(agree == "Yes") %>% 
-  group_by(reason) %>% 
+  mutate(Reason = reason, 
+         Reason = case_when(Reason == "research_help" ~ "Research Help", 
+                            Reason == "coursework_help" ~ "Coursework Help", 
+                            Reason == "flier" ~ "Flier", 
+                            Reason == "refresh_update" ~ "Refresh/Update Skills", 
+                            Reason == "grad_or_career_prep" ~ "Grad/Career Prep", 
+                            Reason == "dept_recommend" ~ "Dept Recommend", 
+                            Reason == "adviser_recommend" ~ "Adviser Recommend", 
+                            Reason == "professional_develop" ~ "Professional Development"), 
+         Reason = factor(Reason, 
+                         levels = c("Research Help", 
+                                    "Coursework Help", 
+                                    "Flier", 
+                                    "Refresh/Update Skills", 
+                                    "Grad/Career Prep", 
+                                    "Dept Recommend", 
+                                    "Adviser Recommend", 
+                                    "Professional Development")
+                         )
+         ) %>% 
+  group_by(Reason) %>% 
   count(n = n()) %>% 
-  arrange(desc(n))  
+  arrange(desc(n))  %>% 
+
+ggplot(mapping = aes(x = Reason, y = n, fill = Reason)) + 
+  coord_flip() + 
+  geom_bar(stat = "identity") + 
+  ylim(0, 60) +
+  #geom_text(aes(label = Freq, y = Freq + 1), vjust = 0, size = 10) +
+  theme_classic() +
+  theme(axis.title.y = element_blank(), 
+        axis.text.y = element_text(size = 16),
+        axis.title.x = element_blank(),
+        axis.text.x = element_text(size = 14),
+        legend.position = "none") + 
+  scale_fill_brewer(palette = "Paired") 
+
 ```
-
-| Reason(s) Attended              | Attendees |  
-|:--------------------------------|:----------|  
-| Research Assistance             | 58        |  
-| Coursework Assistance           | 36        |  
-| Saw a Flier                     | 23        |  
-| Refresh or Update Skills        | 17        |  
-| Preparation for Graduate School | 14        |  
-| Department Recommended          | 13        |  
-| Adviser Recommended             | 6         |  
-| Professional Development        | 6         |   
-
 
 ## Resources Used to Learn `R` 
 
-```{r, echo = FALSE, eval = FALSE}
+```{r, echo = FALSE, fig.align = "center", fig.width = 6, fig.height = 5}
 all_ws <- 
   all_ws %>% 
   mutate(
@@ -977,23 +980,45 @@ all_ws <-
 all_ws %>% 
   gather(no_resources:internet_resources, key = "resource", value = "used") %>% 
   filter(used == "Yes") %>% 
-  group_by(resource) %>% 
+  mutate(Resource = resource, 
+         Resource = case_when(Resource == "internet_resources" ~ "Internet", 
+                              Resource == "course_resources" ~ "Courses", 
+                              Resource == "peer_resources" ~ "Peers", 
+                              Resource == "lab_resources" ~ "Lab Mates", 
+                              Resource == "adviser_resource" ~ "Adviser", 
+                              Resource == "no_resources" ~ "None", 
+                              Resource == "previous_workshops" ~ "These Workshops"), 
+         Resource = factor(Resource, 
+                           levels = c("Internet", 
+                                      "Courses", 
+                                      "Peers", 
+                                      "Lab Mates", 
+                                      "Adviser", 
+                                      "None", 
+                                      "These Workshops")
+                           )
+         ) %>% 
+  group_by(Resource) %>% 
   count(n = n()) %>% 
-  arrange(desc(n))  
+  arrange(desc(n))  %>% 
+  filter(!is.na(Resource)) %>% 
+
+ggplot(mapping = aes(x = Resource, y = n, fill = Resource)) + 
+  coord_flip() + 
+  geom_bar(stat = "identity") + 
+  ylim(0, 60) +
+  #geom_text(aes(label = Freq, y = Freq + 1), vjust = 0, size = 10) +
+  theme_classic() +
+  theme(axis.title.y = element_blank(), 
+        axis.text.y = element_text(size = 16),
+        axis.title.x = element_blank(),
+        axis.text.x = element_text(size = 14),
+        legend.position = "none") + 
+  scale_fill_brewer(palette = "Paired") 
+
+
 
 ```
-
-| Resources Used                  | Attendees |  
-|:--------------------------------|:----------|  
-| Internet Resources              | 55        |  
-| Course Resources                | 45        |  
-| Peers                           | 43        |  
-| Lab Mates                       | 29        |  
-| Adviser                         | 21        |  
-| None                            | 7        |  
-| This Workshop Series            | 5         |  
-| Books                           | 3         |   
-
 
 ## Do These Skills Capture What Researchers Use?
 
@@ -1104,20 +1129,31 @@ across workshops.
 
 ## References 
 
-<center> 
+<div class="columns-2">
+
+</br>
+
+<img src="figures/Rpubs.JPG" style="float:left"> 
 
 </br>
 </br>
-
-![](figures/Rpubs.JPG)
 
 http://bit.ly/theobold_kopriva
+
+</br>
+</br>
+
+<img src="figures/missouri.jpg" style="float:left"> <p>
+
+</div>
 
 ## Thank you! 
 
 Workshop Repository:  
 
 https://github.com/atheobold/data-science-workshops
+
+<img src="figures/fish.jpg" style="float:right"> <p>
 
 </br> 
 
@@ -1136,23 +1172,26 @@ http://www.math.montana.edu/allison_theobold/
 
 ## What is `R`? 
 
+<font size="8">
 <center>
 
 ```
 inherits(R, "S") == TRUE
 ```
 </center>
+</font>
 
 - It's a dialect of S!   
-
-- "`R` is a free software environment for statistical computing and graphics." 
-
-- "The `tidyverse` is an opinionated collection of R packages designed for data science."
 
 - Created because the commonly used data analysis packages had some key 
 downsides: 
     * Graphics were too “quick and dirty” 
     * Relatively little ability to build custom tools 
+
+- "`R` is a free software environment for statistical computing and graphics." 
+
+- "The `tidyverse` is an opinionated collection of R packages designed for data science."
+
 
 ## Why `tidyverse`?
 
