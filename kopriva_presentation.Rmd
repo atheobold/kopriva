@@ -379,7 +379,7 @@ researchers.
 
 In 2017, I developed a suite of four 3-hour data science workshops.  
     
-- Content: skills distilled from interviews & Data & Software Carpentry `R` lessons. 
+- Content: skills distilled from interviews infused into Data & Software Carpentry `R` lessons. 
     
 - Structure: interactive exercises build confidence 
     
@@ -1082,7 +1082,7 @@ skills necessary for graduate-level environmental science research.
 ## Control Flow 
 
 - Conditional statements
-    * Mutating existing variables
+    * Creating new variables by mutating existing variables
     * Function breaks 
 
 </br>
@@ -1157,7 +1157,7 @@ across workshops.
 </br>
 </br>
 
-http://bit.ly/theobold_kopriva
+http://bit.ly/kopriva_theobold
 
 </br>
 </br>
@@ -1204,7 +1204,7 @@ inherits(R, "S") == TRUE
 
 - Created because the commonly used data analysis packages had some key 
 downsides: 
-    * Graphics were too “quick and dirty” 
+    * Graphics were too "quick and dirty" 
     * Relatively little ability to build custom tools 
 
 - "`R` is a free software environment for statistical computing and graphics." 
@@ -1251,7 +1251,7 @@ aggregate(airquality,
 <!-- They are used for subsetting a data frame. -->
 
 2. What is `list()`? 
-<!-- It’s a type of R object. -->
+<!-- It's a type of R object. -->
 
 3. Why is the `mean()` function just sitting there all by itself? 
 <!-- It is being passed to the subsets of the data frame via a kind of internal lapply(). (Follow up: What is lapply()?) -->
@@ -1259,3 +1259,7 @@ aggregate(airquality,
 4. Is `na.rm = TRUE` an argument to aggregate()? 
 <!-- No, it is an argument to mean(), but it is being passed to mean() via the ... argument of aggregate(). -->
 
+
+## Research Journey 
+
+![](figures/research_journey.JPG)
