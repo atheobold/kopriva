@@ -59,7 +59,9 @@ trends in fish abundance.
 <!-- When recording your data in Excel, you chose for each section of the Missouri  -->
 <!-- to be a row and every sampling instance to be a different column.    -->
 
-```{r, out.width = "600px", echo = FALSE, fig.align='right'}
+</br>
+
+```{r, out.width = "600px", echo = FALSE, fig.align = 'center'}
 knitr::include_graphics("figures/wide.jpg")
 ``` 
 
@@ -69,28 +71,28 @@ knitr::include_graphics("figures/wide.jpg")
 But the `R` functions you saw in your courses require for your data to be in long 
 format.
 
-```{r, out.width = "500px", echo = FALSE, fig.align='center'}
+
+```{r, out.width = "500px", echo = FALSE, fig.align = 'center'}
 knitr::include_graphics("figures/long.jpg")
 ``` 
 
 ## Data-Intensive Research  
 
-- Changing practice of environmental science has changed, because of growth in 
-computational power and the volume and variety of available data. 
+<center>
 
-</br>
+![](figures/need_for_computing.JPG)
 
-- Advances in technology have made computationally heavy applications of data 
-science techniques essential understandings for environmental science research.
+<!-- - Changing practice of environmental science has changed, because of growth in  -->
+<!-- computational power and the volume and variety of available data.  -->
 
-</br>
-
+<!-- - Advances in technology have made computationally heavy applications of data  -->
+<!-- science techniques essential understandings for environmental science research. -->
 <!-- management and coalition of large data sets, high frequency spatial and temporal -->
 <!-- data visualization, and hierarchical Bayesian modeling -->
 
-- These advances have created a growing need for scientists to receive an 
-appropriate education in computational methods and techniques relevant to their
-discipline.  
+<!-- - These advances have created a growing need for scientists to receive an  -->
+<!-- appropriate education in computational methods and techniques relevant to their -->
+<!-- discipline.   -->
 
 ## (Lack of) Computing in Environmental Sciences  
 
@@ -137,8 +139,8 @@ necessary for data-intensive environmental science research (Hampton et al.).
 - Environmental science educators reiterate the importance of data science 
 skills for students' participation in "data-intensive" research. 
 
-- None of these conversations pays attention to the role a students' 
-statistics education plays in students' attainment of the computing skills 
+- None of these conversations pay attention to the role a students' 
+statistics education plays in their attainment of the computing skills 
 necessary for data-intensive research. 
 
 <!-- data management, visualization, and analysis -->
@@ -159,7 +161,7 @@ statistics [courses]," because "they have done very little actual data analysis"
 </br>
 
 - Students are either "told to learn how to program by themselves, from each 
-other, or from their teaching assistant in a two-week "crash course" at the 
+other, or from their teaching assistant in a two-week 'crash course' at the 
 start of a course." 
 
 <!-- * Sends a signal to students that computing is not of intellectual  -->
@@ -202,7 +204,16 @@ practice continues to widen" (Cobb, 2015).
 
 - 2017: `tidyverse` houses all of the packages necessary for a clean data science workflow 
 
-<!-- import, tidy, transform, wrangle, visualize, and model data  -->
+<!-- Reuse existing data structures. -->
+
+<!-- Compose simple functions with the pipe. -->
+
+<!-- Embrace functional programming. -->
+
+<!-- Design for humans. -->
+
+<!-- Generally, each function should do one thing well, and you should be able to  -->
+<!-- describe the purpose of the function in one sentence -->
 
 ## Barriers to Incorporating Computing    
 
@@ -241,7 +252,8 @@ field?
 be incorporated into currently existing workshop materials?  
 
 
-3. What are the experiences of individuals attending data science workshops?   
+3. What are the experiences of individuals attending theses tailored data 
+science workshops?   
 
 
 4. Does the content of these workshops reflect the computing skills 
@@ -273,7 +285,7 @@ used by environmental science graduate students in their research?
 |<font size="5"> Research Question | <font size="5"> Design Phase | <font size="5"> Data Collected |      
 |------------------|:--------------:|:----------------:|  
 | <font size="5"> What are the experiences of individuals attending data science workshops? | <font size="5"> Phase 3 |  <font size="5"> Pre- and post-workshop surveys|   
-| <font size="5"> Does the content of these workshops reflect the data science skills used by graduate students in their research? |  | <font size="5"> Collection of research (`R`) code |  
+| <font size="5"> Does the content of these workshops reflect the data science skills used by graduate students in their research? |  | <font size="5"> Collection of graduate students' research (`R`) code |  
 
 </font>
 
@@ -327,7 +339,11 @@ available lessons for specific populations of researchers.
 - `swirl`: an `R` package which turns the `R` console into an interactive 
 learning environment
 
-<!-- Users receive immediate feedback as they are guided through self-paced lessons in data science and R programming  -->
+<!-- With 5 available lessons -- written by Roger Peng and collaborators -->
+<!-- Basics of R Programming -->
+<!-- R Environment -->
+<!-- Getting and Cleaning Data -->
+<!-- Advanced R Programming -->
 
 - Data Camp: interactive `R`, Python, Sheets, SQL and shell courses. Paid online 
 video lessons with coding challenges and projects.
@@ -367,13 +383,13 @@ In 2017, I developed a suite of four 3-hour data science workshops.
     
 - Structure: interactive exercises build confidence 
     
-- Context: environmental science data promotes learning transfer
+- Context: environmental science data promote learning transfer
 
 ## `R` for Data Science Workshops    
 
 | <font size="5"> |                              |    
 |:----------------|:----------------------------:|  
-| <font size="5"> Introduction to `R` | <font size="5"> objects in `R`, working in `R`, inspecting, extracting, wrangling, summarizing, and visualizing data with base `R` tools |  
+| <font size="5"> Introduction to `R` | <font size="5"> objects in `R`, working in `R`, inspecting, extracting, cleaning, summarizing, and visualizing data with base `R` tools |  
 | <font size="5"> Intermediate `R` | <font size="5"> relational and logical operators, conditional statements, looping, and user-defined functions  |  
 | <font size="5"> Data Wrangling in `R` |  <font size="5"> data wrangling with `dplyr`, `stringr`, `forcats`, and `lubridate`, data organization with `tidyr` |  
 | <font size="5"> Data Visualization in `R` | <font size="5"> grammar of graphics with `ggplot2` |
@@ -381,8 +397,7 @@ In 2017, I developed a suite of four 3-hour data science workshops.
 ## Workshop Tools 
 
 - RStudio 
-    * Access to the resources of `R`, while providing you with a comfortable 
-    working environment. 
+    * Access to the resources of `R`, in a comfortable working environment 
     * Consistent across operating systems! 
 <!-- Not the case for other statistical software packages. -->
 
@@ -398,8 +413,8 @@ In 2017, I developed a suite of four 3-hour data science workshops.
 <!-- documents, allowing for a full integration of the data analysis workflow. -->
 
 - RMarkdown Documents  
-    * Allows attendees to keep their code organized and their workspace clean. 
-    * Exploratory work is situated within each topic.  
+    * Promotes organized code and clean workspaces   
+    * Exploratory work is situated within each topic 
   
 <!-- For new learners, it is unnatural to create an organized script file with comments on each step.  -->
         
@@ -412,8 +427,8 @@ In 2017, I developed a suite of four 3-hour data science workshops.
 <!-- The RStudio Cloud was created as a platform to make it easy to do, share, -->
 <!-- teach and learn data science using `R`.  -->
     * Publicly available workshop materials, without software or package 
-    installation, or data transfers. 
-    * Each workshop is contained in an organized `R` project directory. 
+    installation, or data transfers
+    * Each workshop is contained in an organized `R` project directory 
   
 <!-- Interact with the workshop's materials in the same manner as a locally  -->
 <!-- installed version of RStudio -->
@@ -544,6 +559,10 @@ fish %>%
 
 ```
 
+<!-- A powerful strategy for solving complex problems is to combine many simple pieces.  -->
+
+<!-- Each piece should be easily understood in isolation, and have a standard way to combine with other pieces. -->
+
 ## Data Visualization with `ggplot2` 
 
 ```{r, echo = FALSE}
@@ -560,7 +579,7 @@ grid.arrange(wl, len, nrow = 2, widths = c(6, 4))
   flair("geom_histogram")
 ```
 
-```{r, echo = FALSE, warning = FALSE, fig.width = 20, fig.height = 10}
+```{r, echo = FALSE, warning = FALSE, fig.width = 20, fig.height = 10, fig.align = 'center'}
 wl <- fish %>%
         ggplot(aes(x = length, y = weight, color = species)) + 
         geom_point()
@@ -1123,7 +1142,7 @@ across workshops.
 - Stacey Hancock   
 - Mary Alice Carlson, Jenny Green, & Megan Wickstrom 
 - Sara Mannheimer & Mark Greenwood
-- Workshop Facilitators and Helpers 
+- Workshop facilitators and helpers 
 - Environmental Science faculty and graduate students
 
 
@@ -1195,6 +1214,12 @@ downsides:
 
 ## Why `tidyverse`?
 
+<blockquote> 
+Programs must be written for people to read, and only incidentally for machines to execute.  
+- Hal Abelson
+</blockquote>
+
+
 ```{r}
 sample_n(airquality, 8)
 ```
@@ -1233,3 +1258,4 @@ aggregate(airquality,
 
 4. Is `na.rm = TRUE` an argument to aggregate()? 
 <!-- No, it is an argument to mean(), but it is being passed to mean() via the ... argument of aggregate(). -->
+

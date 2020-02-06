@@ -2,3 +2,10 @@ slides > slide.title-slide {
     background-image: url("figures/MSU.png");
     background-size: 100%;
 }
+
+blockquote {
+  background: #f9f9f9;
+  border-left: 5px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 1.5em;
+}
